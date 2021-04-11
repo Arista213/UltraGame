@@ -11,19 +11,19 @@ D:\Unity\2020.3.3f1\Editor\Unity.exe
 -name
 AssetImportWorker0
 -projectPath
-D:/Z_ SCP SWAG FILES/GitProjects/UltraGame
+D:/Z_ SCP SWAG FILES/GitProjects/Test
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-57519
-Successfully changed project path to: D:/Z_ SCP SWAG FILES/GitProjects/UltraGame
-D:/Z_ SCP SWAG FILES/GitProjects/UltraGame
+57616
+Successfully changed project path to: D:/Z_ SCP SWAG FILES/GitProjects/Test
+D:/Z_ SCP SWAG FILES/GitProjects/Test
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 45.43 ms, found 1 plugins.
+Refreshing native plugins compatible for Editor in 35.40 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2020.3.3f1 (76626098c1c4)
 [Subsystems] Discovering subsystems at path D:/Unity/2020.3.3f1/Editor/Data/Resources/UnitySubsystems
-[Subsystems] Discovering subsystems at path D:/Z_ SCP SWAG FILES/GitProjects/UltraGame/Assets
+[Subsystems] Discovering subsystems at path D:/Z_ SCP SWAG FILES/GitProjects/Test/Assets
 GfxDevice: creating device client; threaded=0
 Direct3D:
     Version:  Direct3D 11.0 [level 11.1]
@@ -35,123 +35,68 @@ Initialize mono
 Mono path[0] = 'D:/Unity/2020.3.3f1/Editor/Data/Managed'
 Mono path[1] = 'D:/Unity/2020.3.3f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
 Mono config path = 'D:/Unity/2020.3.3f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56292
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56216
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: D:/Unity/2020.3.3f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
 Register platform support module: D:/Unity/2020.3.3f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.000984 seconds.
+Registered in 0.000983 seconds.
 Native extension for WindowsStandalone target not found
 Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 36.83 ms, found 1 plugins.
+Refreshing native plugins compatible for Editor in 33.39 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.967 seconds
+- Completed reload, in  0.862 seconds
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.000636 seconds.
+Registered in 0.000687 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
 Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 41.36 ms, found 1 plugins.
+Refreshing native plugins compatible for Editor in 41.98 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.864 seconds
+- Completed reload, in  0.857 seconds
 Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.05 seconds
-Refreshing native plugins compatible for Editor in 0.35 ms, found 1 plugins.
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.04 seconds
+Refreshing native plugins compatible for Editor in 0.38 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 1809 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 84.9 MB.
-System memory in use after: 85.0 MB.
+System memory in use before: 84.8 MB.
+System memory in use after: 84.9 MB.
 
-Unloading 20 unused Assets to reduce memory usage. Loaded Objects now: 2255.
-Total: 1.938000 ms (FindLiveObjects: 0.203300 ms CreateObjectMapping: 0.083500 ms MarkObjects: 1.571600 ms  DeleteObjects: 0.078400 ms)
-
-========================================================================
-Received Import Request.
-  path: Assets/Scenes/SampleScene.unity
-  artifactKey: Guid(2cda990e2423bbf4892e6590ba056729) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/SampleScene.unity using Guid(2cda990e2423bbf4892e6590ba056729) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0a59ef0011206403181b6dace8b464c4') in 0.009158 seconds
-  Import took 0.011721 seconds .
+Unloading 19 unused Assets to reduce memory usage. Loaded Objects now: 2256.
+Total: 2.125700 ms (FindLiveObjects: 0.218100 ms CreateObjectMapping: 0.110300 ms MarkObjects: 1.742000 ms  DeleteObjects: 0.054400 ms)
 
 ========================================================================
 Received Import Request.
-  Time since last request: 2.831641 seconds.
-  path: Assets/Scripts/SquareScript.cs
-  artifactKey: Guid(e8bcc2cc436d8b04191e43d3b09c9a64) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scripts/SquareScript.cs using Guid(e8bcc2cc436d8b04191e43d3b09c9a64) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1787ea33b7c89e900760332849e1097b') in 0.014764 seconds
-  Import took 0.017697 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.013502 seconds.
-  path: Assets/Scripts/SquareScript.cs
-  artifactKey: Guid(e8bcc2cc436d8b04191e43d3b09c9a64) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scripts/SquareScript.cs using Guid(e8bcc2cc436d8b04191e43d3b09c9a64) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1787ea33b7c89e900760332849e1097b') in 0.001157 seconds
-  Import took 0.004548 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 3.711848 seconds.
-  path: Assets/Scripts/Movements.cs
-  artifactKey: Guid(e8bcc2cc436d8b04191e43d3b09c9a64) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scripts/Movements.cs using Guid(e8bcc2cc436d8b04191e43d3b09c9a64) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b6a6cbe82ca1d6fda4b209a84d0569e1') in 0.001541 seconds
-  Import took 0.005628 seconds .
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.000579 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for WindowsStandalone target not found
-Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 0.32 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.746 seconds
-Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0.33 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 1800 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 84.5 MB.
-System memory in use after: 84.6 MB.
-
-Unloading 8 unused Assets to reduce memory usage. Loaded Objects now: 2259.
-Total: 1.975800 ms (FindLiveObjects: 0.245700 ms CreateObjectMapping: 0.091600 ms MarkObjects: 1.583700 ms  DeleteObjects: 0.052900 ms)
-
-========================================================================
-Received Import Request.
-  Time since last request: 144.195115 seconds.
   path: Assets/Prefabs/Tree.prefab
   artifactKey: Guid(68755e7fe08ed8d4f95be94bd30b4b01) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/Tree.prefab using Guid(68755e7fe08ed8d4f95be94bd30b4b01) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5aa718493e7e6546d7075f4eabc69829') in 0.028734 seconds
-  Import took 0.031877 seconds .
+Start importing Assets/Prefabs/Tree.prefab using Guid(68755e7fe08ed8d4f95be94bd30b4b01) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3e7f2b8fbfbc5849f3e4c6d3fd8386de') in 0.107864 seconds
+  Import took 0.110606 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000410 seconds.
-  path: Assets/Prefabs/Tree.prefab
-  artifactKey: Guid(68755e7fe08ed8d4f95be94bd30b4b01) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/Tree.prefab using Guid(68755e7fe08ed8d4f95be94bd30b4b01) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5aa718493e7e6546d7075f4eabc69829') in 0.002623 seconds
-  Import took 0.005379 seconds .
+  Time since last request: 38.740656 seconds.
+  path: Packages/com.unity.2d.spriteshape/Editor/ObjectMenuCreation/DefaultAssets/Sprite Shapes/Closed Sprite Shape.prefab
+  artifactKey: Guid(c0583b4e855c74b8c82e7b9b5efb5ce9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.unity.2d.spriteshape/Editor/ObjectMenuCreation/DefaultAssets/Sprite Shapes/Closed Sprite Shape.prefab using Guid(c0583b4e855c74b8c82e7b9b5efb5ce9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'db0c7b8b5b76187c86f78012b562d94b') in 0.015812 seconds
+  Import took 0.018667 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 2.555082 seconds.
-  path: Assets/Prefabs/Tree.prefab
-  artifactKey: Guid(68755e7fe08ed8d4f95be94bd30b4b01) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/Tree.prefab using Guid(68755e7fe08ed8d4f95be94bd30b4b01) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8deae9aba7b39378dd066e8a54f40e45') in 0.065427 seconds
-  Import took 0.068244 seconds .
+  Time since last request: 0.000255 seconds.
+  path: Packages/com.unity.2d.spriteshape/Editor/ObjectMenuCreation/DefaultAssets/Sprite Shapes/Open Sprite Shape.prefab
+  artifactKey: Guid(86ae7de409eb54f619fb1328e4d42480) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.unity.2d.spriteshape/Editor/ObjectMenuCreation/DefaultAssets/Sprite Shapes/Open Sprite Shape.prefab using Guid(86ae7de409eb54f619fb1328e4d42480) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '956c198294386e32f606d2d431e34df8') in 0.003133 seconds
+  Import took 0.005727 seconds .
 
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file
