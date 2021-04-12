@@ -1,26 +1,17 @@
 using UnityEngine;
+using UnityEngine.Animations;
 
 namespace Assets.Scripts
 {
     public class Movements : MonoBehaviour
     {
-        [SerializeField] private KeyCode KeyW = KeyCode.W;
-        [SerializeField] private KeyCode KeyS = KeyCode.S;
-        [SerializeField] private KeyCode KeyA = KeyCode.A;
-        [SerializeField] private KeyCode KeyD = KeyCode.D;
-        [SerializeField] readonly Vector2 _moveY = new (0, 0.1f);
-        [SerializeField] readonly Vector2 _moveX = new (0.1f, 0);
+        [SerializeField] private float _mSpeed = 5f;
 
         private void FixedUpdate()
         {
-            if (Input.GetKey(KeyW))
-                GetComponent<Rigidbody2D>().velocity += _moveY;
-            if (Input.GetKey(KeyS))
-                GetComponent<Rigidbody2D>().velocity -= _moveY;
-            if (Input.GetKey(KeyA))
-                GetComponent<Rigidbody2D>().velocity -= _moveX;
-            if (Input.GetKey(KeyD))
-                GetComponent<Rigidbody2D>().velocity += _moveX;
+            float moveX = Input.GetAxis("Horizontal");
+            float moveY = Input.GetAxis("Vertical");
+            GetComponent<Rigidbody2D>().velocity = new Vector2(_mSpeed * moveX, _mSpeed * moveY);
         }
     }
 }
