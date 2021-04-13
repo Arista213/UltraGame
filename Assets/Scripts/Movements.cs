@@ -19,7 +19,6 @@ namespace Assets.Scripts
         {
             float moveX = Input.GetAxis("Horizontal");
             float moveY = Input.GetAxis("Vertical");
-
             var speed = Math.Max(Mathf.Abs(moveX), Mathf.Abs(moveY));
             anim.SetFloat("Speed", speed);
 

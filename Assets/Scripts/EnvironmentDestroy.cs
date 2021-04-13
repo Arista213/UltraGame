@@ -1,18 +1,30 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnvironmentDestroy : MonoBehaviour
+namespace Assets.Scripts
 {
-    
-    void Start()
+    public class EnvironmentDestroy : MonoBehaviour
     {
-        
-    }
+        private Transform player;
+        private Vector2 hand;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        void Start()
+        {
+            player = GameObject.FindWithTag("Player").transform;
+        }
+
+        void UpdateHand()
+        {
+            var directionX = Input.GetAxis("Horizontal");
+            var directionY = Input.GetAxis("Vertical");
+            hand = new Vector2((float) Math.Ceiling(directionX), (float) Math.Ceiling(directionY));
+        }
+
+        void FixedUpdate()
+        {
+            UpdateHand();
+        }
     }
 }
