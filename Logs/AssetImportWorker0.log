@@ -559,3 +559,36 @@ System memory in use after: 91.8 MB.
 Unloading 8 unused Assets to reduce memory usage. Loaded Objects now: 2443.
 Total: 3.241900 ms (FindLiveObjects: 0.367800 ms CreateObjectMapping: 0.119400 ms MarkObjects: 2.685100 ms  DeleteObjects: 0.067300 ms)
 
+========================================================================
+Received Import Request.
+  Time since last request: 1125.807556 seconds.
+  path: Assets/Prefabs/Tree.prefab
+  artifactKey: Guid(68755e7fe08ed8d4f95be94bd30b4b01) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Tree.prefab using Guid(68755e7fe08ed8d4f95be94bd30b4b01) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b8784c161f171f2946af9ce4f8b04a26') in 0.053558 seconds
+  Import took 0.056814 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.000645 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.34 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.776 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.35 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1911 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 91.7 MB.
+System memory in use after: 91.8 MB.
+
+Unloading 8 unused Assets to reduce memory usage. Loaded Objects now: 2448.
+Total: 2.079200 ms (FindLiveObjects: 0.227600 ms CreateObjectMapping: 0.096400 ms MarkObjects: 1.700000 ms  DeleteObjects: 0.053200 ms)
+
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file
