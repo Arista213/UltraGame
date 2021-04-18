@@ -1,22 +1,19 @@
 fileFormatVersion: 2
-guid: 239ed61e672956647ae8750a5badf3a8
+guid: df08d4af3b0b09540b380da76c85fbe1
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4723107735738678597
-    second: Idle_0
+      213: -6489288573470578504
+    second: DestroyObjectAnimation_0
   - first:
-      213: -7385789195546760866
-    second: Idle_1
+      213: 634210776162067599
+    second: DestroyObjectAnimation_1
   - first:
-      213: 3234629978573100161
-    second: Idle_2
+      213: -9027191187416677310
+    second: DestroyObjectAnimation_2
   - first:
-      213: 6373048116405451881
-    second: Idle_3
-  - first:
-      213: 7264182050183361747
-    second: Idle_4
+      213: 7182012924890853678
+    second: DestroyObjectAnimation_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -118,13 +115,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Idle_0
+      name: DestroyObjectAnimation_0
       rect:
         serializedVersion: 2
-        x: 16
-        y: 12
-        width: 124
-        height: 244
+        x: 5
+        y: 16
+        width: 328
+        height: 146
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -132,20 +129,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 54d7a982679db8140800000000000000
-      internalID: 4723107735738678597
+      spriteID: 8b8e8459c6a61f5a0800000000000000
+      internalID: -6489288573470578504
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle_1
+      name: DestroyObjectAnimation_1
       rect:
         serializedVersion: 2
-        x: 188
-        y: 12
-        width: 124
-        height: 248
+        x: 371
+        y: 21
+        width: 294
+        height: 145
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -153,20 +150,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e596485bbd7608990800000000000000
-      internalID: -7385789195546760866
+      spriteID: f846dd9375b2dc800800000000000000
+      internalID: 634210776162067599
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle_2
+      name: DestroyObjectAnimation_2
       rect:
         serializedVersion: 2
-        x: 340
-        y: 12
-        width: 124
-        height: 252
+        x: 686
+        y: 13
+        width: 309
+        height: 149
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -174,20 +171,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 184dda4e3d6b3ec20800000000000000
-      internalID: 3234629978573100161
+      spriteID: 2440e727179f8b280800000000000000
+      internalID: -9027191187416677310
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle_3
+      name: DestroyObjectAnimation_3
       rect:
         serializedVersion: 2
-        x: 494
-        y: 15
-        width: 124
-        height: 248
+        x: 1004
+        y: 13
+        width: 359
+        height: 149
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -195,29 +192,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 96cb1dafe7d917850800000000000000
-      internalID: 6373048116405451881
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Idle_4
-      rect:
-        serializedVersion: 2
-        x: 646
-        y: 19
-        width: 124
-        height: 244
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3d4b2fc561f8fc460800000000000000
-      internalID: 7264182050183361747
+      spriteID: e21326804b2aba360800000000000000
+      internalID: 7182012924890853678
       vertices: []
       indices: 
       edges: []
