@@ -11,9 +11,13 @@ GameObject:
   - component: {fileID: 922513131081864534}
   - component: {fileID: 9033840008235421932}
   - component: {fileID: 7909163679265542097}
+<<<<<<< HEAD
   - component: {fileID: 4992011105217857686}
   - component: {fileID: 1192417577483827353}
   m_Layer: 6
+=======
+  m_Layer: 0
+>>>>>>> origin
   m_Name: Tree
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -111,6 +115,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+<<<<<<< HEAD
 --- !u!50 &4992011105217857686
 Rigidbody2D:
   serializedVersion: 4
@@ -144,3 +149,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aeb88d193d7f6ec4bb1582321b2f2283, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+=======
+>>>>>>> origin
