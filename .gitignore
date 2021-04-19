@@ -1,26 +1,12 @@
-<<<<<<< HEAD
-=======
 # This .gitignore file should be placed at the root of your Unity project directory
 #
 # Get latest from https://github.com/github/gitignore/blob/master/Unity.gitignore
 #
->>>>>>> origin
 /[Ll]ibrary/
 /[Tt]emp/
 /[Oo]bj/
 /[Bb]uild/
 /[Bb]uilds/
-<<<<<<< HEAD
-
-# Exclude 3rd party libraries installed from the assets store
-[Aa]ssets/Asset Store Resources/
-
-# Some asset tools can't be moved so need to explicitly 
-/Assets/TextMesh Pro*
-
-# Exclude rider idea data
-.idea
-=======
 /[Ll]ogs/
 /[Uu]ser[Ss]ettings/
 
@@ -39,7 +25,6 @@
 
 # Visual Studio cache directory
 .vs/
->>>>>>> origin
 
 # Gradle cache directory
 .gradle/
@@ -58,11 +43,6 @@ ExportedObj/
 *.booproj
 *.svd
 *.pdb
-<<<<<<< HEAD
-
-# Unity3D generated meta files
-*.pidb.meta
-=======
 *.mdb
 *.opendb
 *.VC.db
@@ -71,16 +51,13 @@ ExportedObj/
 *.pidb.meta
 *.pdb.meta
 *.mdb.meta
->>>>>>> origin
 
 # Unity3D generated file on crash reports
 sysinfo.txt
 
 # Builds
 *.apk
-<<<<<<< HEAD
-*.unitypackage
-=======
+*.aab
 *.unitypackage
 
 # Crashlytics generated file
@@ -92,8 +69,3 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
-
-# Exceptions
-!*.dll
-!*.obj
->>>>>>> origin
