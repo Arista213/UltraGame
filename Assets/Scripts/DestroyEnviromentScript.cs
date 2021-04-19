@@ -13,7 +13,7 @@ namespace Assets.Scripts
         [SerializeField] private Transform destroyPos;
         [SerializeField] private LayerMask objectToDestroy;
         [SerializeField] private float destroyRange;
-        //[SerializeField] private Animator anim;
+        [SerializeField] private Animator anim;
 
         void FixedUpdate()
         {
@@ -22,7 +22,7 @@ namespace Assets.Scripts
                 print(timeBtwDestroy);
                 if (Input.GetKey(KeyCode.Space))
                 {
-                    //anim.SetTrigger("Destroy");
+                    anim.SetTrigger("Destroy");
                     OnDestroy();
                     timeBtwDestroy = destroyCooldown;
                 }
