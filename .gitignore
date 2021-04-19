@@ -9,7 +9,7 @@
 /[Bb]uilds/
 /[Ll]ogs/
 /[Uu]ser[Ss]ettings/
-
+**/*.log
 # MemoryCaptures can get excessive in size.
 # They also could contain extremely sensitive data
 /[Mm]emoryCaptures/
@@ -69,8 +69,6 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
-Logs/AssetImportWorker0.log
-Logs/AssetImportWorker0-prev.log
 .idea/.idea.UltraGame/.idea/indexLayout.xml
 
 #Rider
@@ -97,6 +95,7 @@ Logs/AssetImportWorker0-prev.log
 **/.idea/**/contentModel.xml
 **/.idea/**/modules.xml
 
+*.log 
 *.suo
 *.user
 .vs/
