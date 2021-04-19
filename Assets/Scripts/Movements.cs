@@ -21,9 +21,7 @@ namespace Assets.Scripts
             float moveY = Input.GetAxis("Vertical");
             var speed = Math.Max(Mathf.Abs(moveX), Mathf.Abs(moveY));
             anim.SetFloat("Speed", speed);
-
-            //обращаемся к компоненту персонажа RigidBody2D. задаем ему скорость по оси Х, 
-            //равную значению оси Х умноженное на значение макс. скорости
+            
             GetComponent<Rigidbody2D>().velocity =
                 new Vector2(moveX * _mMaxSpeed, moveY * _mMaxSpeed);
 

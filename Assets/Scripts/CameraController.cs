@@ -5,11 +5,11 @@ namespace Assets.Scripts
 {
     public class CameraController : MonoBehaviour
     {
-        public float dumping = 1.5f;
+        public float dumping = 2.5f;
         private float offsetX;
         private float offsetY;
         private Transform player;
-        private Vector3 offset = new Vector3(1f, 1f);
+        private Vector3 offset = new Vector3(0.5f, 0.5f);
 
         void Start()
         {
