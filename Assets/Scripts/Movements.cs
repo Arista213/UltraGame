@@ -1,42 +1,26 @@
-using System;
 using UnityEngine;
-using UnityEngine.Animations;
 
 namespace Assets.Scripts
 {
-    public class Movements : MonoBehaviour
+    public class SquareScript : MonoBehaviour
     {
-        [SerializeField] private float _mMaxSpeed = 3f;
-        private bool isFacingRight = true;
-        private Animator anim;
-
-        private void Start()
-        {
-            anim = GetComponent<Animator>();
-        }
+        [SerializeField] private KeyCode KeyW = KeyCode.W;
+        [SerializeField] private KeyCode KeyS = KeyCode.S;
+        [SerializeField] private KeyCode KeyA = KeyCode.A;
+        [SerializeField] private KeyCode KeyD = KeyCode.D;
+        [SerializeField] private Vector2 moveY = new Vector2(0, 0.2f);
+        [SerializeField] private Vector2 moveX = new Vector2(0.2f, 0);
 
         private void FixedUpdate()
         {
-            float moveX = Input.GetAxis("Horizontal");
-            float moveY = Input.GetAxis("Vertical");
-            var speed = Math.Max(Mathf.Abs(moveX), Mathf.Abs(moveY));
-            anim.SetFloat("Speed", speed);
-            
-            GetComponent<Rigidbody2D>().velocity =
-                new Vector2(moveX * _mMaxSpeed, moveY * _mMaxSpeed);
-
-            if (moveX > 0 && !isFacingRight)
-                Flip();
-            else if (moveX < 0 && isFacingRight)
-                Flip();
-        }
-
-        private void Flip()
-        {
-            isFacingRight = !isFacingRight;
-            Vector3 theScale = transform.localScale;
-            theScale.x *= -1;
-            transform.localScale = theScale;
+            if (Input.GetKey(KeyW))
+                GetComponent<Rigidbody2D>().velocity += moveY;
+            if (Input.GetKey(KeyS))
+                GetComponent<Rigidbody2D>().velocity -= moveY;
+            if (Input.GetKey(KeyA))
+                GetComponent<Rigidbody2D>().velocity -= moveX;
+            if (Input.GetKey(KeyD))
+                GetComponent<Rigidbody2D>().velocity += moveX;
         }
     }
 }
