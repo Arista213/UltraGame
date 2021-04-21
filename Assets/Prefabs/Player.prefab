@@ -30,8 +30,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6033121096876306021}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.2562554, y: 2.7807412, z: 0}
-  m_LocalScale: {x: 10.53, y: 0.1755693, z: 1}
+  m_LocalPosition: {x: -1.558, y: -3.6637, z: 0}
+  m_LocalScale: {x: 0.2560134, y: 0.2322038, z: 0.53853405}
   m_Children:
   - {fileID: 7985912054032194551}
   m_Father: {fileID: 0}
@@ -98,8 +98,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: 4723107735738678597, guid: 239ed61e672956647ae8750a5badf3a8, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 6e72f37d18317b44eac68c9dc942cd51, type: 3}
+  m_Color: {r: 0.7075472, g: 0.7075472, b: 0.7075472, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -137,10 +137,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 6033121096876306021}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8bcc2cc436d8b04191e43d3b09c9a64, type: 3}
+  m_Script: {fileID: 11500000, guid: 09155ec6b80bea44282ac1fb9635ada0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mMaxSpeed: 1.5
+  _mMaxSpeed: 1
 --- !u!114 &358471723216902905
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -153,14 +153,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8a439aa0b56c42468d700103a41b3d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeBtwDestroy: 0
-  destroyCooldown: 2
-  destroyPos: {fileID: 7985912054032194551}
-  objectToDestroy:
+  _destroyDelay: 1
+  _destroyPos: {fileID: 7985912054032194551}
+  _objectToDestroy:
     serializedVersion: 2
-    m_Bits: 4294967295
-  destroyRange: 0.32
-  anim: {fileID: 489175315752747599}
+    m_Bits: 64
+  _anim: {fileID: 0}
+  _destroyRange: {x: 1, y: 0.2, z: 0}
 --- !u!58 &489175315752747597
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -192,7 +191,7 @@ GameObject:
   m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7985912054032194551
 Transform:
   m_ObjectHideFlags: 0
@@ -201,7 +200,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7795622322527525495}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.2654521, y: 0, z: 0}
+  m_LocalPosition: {x: 2.03, y: 0.27, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6033121096876306025}

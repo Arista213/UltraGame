@@ -8,38 +8,39 @@ namespace Assets.Scripts
 {
     public class DestroyEnviromentScript : MonoBehaviour
     {
-        [SerializeField] private float timeBtwDestroy;
-        [SerializeField] private float destroyCooldown;
-        [SerializeField] private Transform destroyPos;
-        [SerializeField] private LayerMask objectToDestroy;
-        [SerializeField] private float destroyRange;
-        [SerializeField] private Animator anim;
+        private float _timeBtwDestroy;
+        [SerializeField] private float _destroyDelay;
+        [SerializeField] private Transform _destroyPos;
+        [SerializeField] private LayerMask _objectToDestroy;
+        [SerializeField] private Animator _anim;
+        [SerializeField] private Vector3 _destroyRange;
 
         void FixedUpdate()
         {
-            if (timeBtwDestroy <= 0)
+            if (_timeBtwDestroy <= 0)
             {
-                print(timeBtwDestroy);
                 if (Input.GetKey(KeyCode.Space))
                 {
-                    anim.SetTrigger("Destroy");
+                    _anim.SetTrigger("Destroy");
                     OnDestroy();
-                    timeBtwDestroy = destroyCooldown;
+                    _timeBtwDestroy = _destroyDelay;
                 }
             }
-            else timeBtwDestroy -= Time.deltaTime;
+            else _timeBtwDestroy -= Time.deltaTime;
         }
 
         void OnDestroy()
         {
             Collider2D[] objectsToDestroy =
-                Physics2D.OverlapCircleAll(destroyPos.position, destroyRange, objectToDestroy);
+                Physics2D.OverlapBoxAll(_destroyPos.position, _destroyRange, 0f, _objectToDestroy);
 
-            print(objectsToDestroy.Length);
-            for (int i = 0; i < objectsToDestroy.Length; i++)
-            {
-                objectsToDestroy[i].GetComponent<EnviromentDestroyable>().ToDestroy();
-            }
+            foreach (var e in objectsToDestroy)
+                e.GetComponent<EnviromentDestroyable>().ToDestroy();
+        }
+
+        void OnDrawGizmosSelected()
+        {
+            Gizmos.DrawWireCube(_destroyPos.position, _destroyRange);
         }
     }
 }
