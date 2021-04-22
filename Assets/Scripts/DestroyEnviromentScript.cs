@@ -10,10 +10,12 @@ namespace Assets.Scripts
     {
         private float _timeBtwDestroy;
         [SerializeField] private float _destroyDelay;
-        [SerializeField] private Transform _destroyPos;
         [SerializeField] private LayerMask _objectToDestroy;
         [SerializeField] private Animator _anim;
-        [SerializeField] private Vector3 _destroyRange;
+        [SerializeField] private Vector3 _destroyRangeHorizontal = new Vector3(1f, 0.2f, 0);
+        [SerializeField] private Vector3 _destroyRangeVertical = new Vector3(0.2f, 1f, 0);
+        [SerializeField] private HandPosScript _hand;
+        private Vector3 _currentDestroyRange = new Vector3(1f, 0.2f, 0);
 
         void FixedUpdate()
         {
@@ -21,7 +23,11 @@ namespace Assets.Scripts
             {
                 if (Input.GetKey(KeyCode.Space))
                 {
-                    _anim.SetTrigger("Destroy");
+                    if (_hand.HandDirection == Direction.Left || _hand.HandDirection == Direction.Right)
+                        _anim.SetTrigger("DestroyHorizontal");
+                    else if (_hand.HandDirection == Direction.Up)
+                        _anim.SetTrigger("DestroyUp");
+                    else _anim.SetTrigger("DestroyDown");
                     OnDestroy();
                     _timeBtwDestroy = _destroyDelay;
                 }
@@ -31,16 +37,19 @@ namespace Assets.Scripts
 
         void OnDestroy()
         {
-            Collider2D[] objectsToDestroy =
-                Physics2D.OverlapBoxAll(_destroyPos.position, _destroyRange, 0f, _objectToDestroy);
+            _currentDestroyRange =
+                _hand.HandDirection == Direction.Up ? _destroyRangeVertical : _destroyRangeHorizontal;
 
-            foreach (var e in objectsToDestroy)
-                e.GetComponent<EnviromentDestroyable>().ToDestroy();
+            Collider2D[] objectsToDestroy =
+                Physics2D.OverlapBoxAll(_hand.transform.position, _currentDestroyRange, 0f, _objectToDestroy);
+
+            foreach (var obj in objectsToDestroy)
+                obj.GetComponent<EnviromentDestroyable>().ToDestroy();
         }
 
         void OnDrawGizmosSelected()
         {
-            Gizmos.DrawWireCube(_destroyPos.position, _destroyRange);
+            Gizmos.DrawWireCube(_hand.transform.position, _currentDestroyRange);
         }
     }
 }
