@@ -249,7 +249,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8a439aa0b56c42468d700103a41b3d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _destroyDelay: 1
+  _destroyDelay: 0.5
   _objectToDestroy:
     serializedVersion: 2
     m_Bits: 64
