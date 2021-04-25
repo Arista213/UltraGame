@@ -23,11 +23,25 @@ namespace Assets.Scripts
             {
                 if (Input.GetKey(KeyCode.Space))
                 {
-                    if (_hand.HandDirection == Direction.Left || _hand.HandDirection == Direction.Right)
-                        _anim.SetTrigger("DestroyHorizontal");
-                    else if (_hand.HandDirection == Direction.Up)
-                        _anim.SetTrigger("DestroyUp");
-                    else _anim.SetTrigger("DestroyDown");
+                    switch (_hand.HandDirection)
+                    {
+                        case Direction.Down:
+                        {
+                            _anim.SetTrigger("DestroyDown");
+                            break;
+                        }
+                        case Direction.Up:
+                        {
+                            _anim.SetTrigger("DestroyUp");
+                            break;
+                        }
+                        default:
+                        {
+                            _anim.SetTrigger("DestroyHorizontal");
+                            break;
+                        }
+                    }
+
                     OnDestroy();
                     _timeBtwDestroy = _destroyDelay;
                 }
@@ -43,10 +57,21 @@ namespace Assets.Scripts
             Collider2D[] objectsToDestroy =
                 Physics2D.OverlapBoxAll(_hand.transform.position, _currentDestroyRange, 0f, _objectToDestroy);
             if (objectsToDestroy.Length > 0)
-                objectsToDestroy[0].GetComponent<EnviromentDestroyable>().ToDestroy();
+            {
+                var minDistanceBtwPlayer = float.MaxValue;
+                var currentObjWithMinDistance = objectsToDestroy[0];
+                foreach (var obj in objectsToDestroy)
+                {
+                    var distance = (transform.position - obj.GetComponent<Transform>().position).magnitude;
+                    if (distance < minDistanceBtwPlayer)
+                    {
+                        minDistanceBtwPlayer = distance;
+                        currentObjWithMinDistance = obj;
+                    }
+                }
 
-            /*foreach (var obj in objectsToDestroy)
-                obj.GetComponent<EnviromentDestroyable>().ToDestroy();*/
+                currentObjWithMinDistance.GetComponent<EnviromentDestroyable>().ToDestroy();
+            }
         }
 
         void OnDrawGizmosSelected()
