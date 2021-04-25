@@ -8,38 +8,48 @@ namespace Assets.Scripts
 {
     public class DestroyEnviromentScript : MonoBehaviour
     {
-        [SerializeField] private float timeBtwDestroy;
-        [SerializeField] private float destroyCooldown;
-        [SerializeField] private Transform destroyPos;
-        [SerializeField] private LayerMask objectToDestroy;
-        [SerializeField] private float destroyRange;
-        [SerializeField] private Animator anim;
+        private float _timeBtwDestroy;
+        [SerializeField] private float _destroyDelay;
+        [SerializeField] private LayerMask _objectToDestroy;
+        [SerializeField] private Animator _anim;
+        [SerializeField] private Vector3 _destroyRangeHorizontal = new Vector3(1f, 0.2f, 0);
+        [SerializeField] private Vector3 _destroyRangeVertical = new Vector3(0.2f, 1f, 0);
+        [SerializeField] private HandPosScript _hand;
+        private Vector3 _currentDestroyRange = new Vector3(1f, 0.2f, 0);
 
         void FixedUpdate()
         {
-            if (timeBtwDestroy <= 0)
+            if (_timeBtwDestroy <= 0)
             {
-                print(timeBtwDestroy);
                 if (Input.GetKey(KeyCode.Space))
                 {
-                    anim.SetTrigger("Destroy");
+                    if (_hand.HandDirection == Direction.Left || _hand.HandDirection == Direction.Right)
+                        _anim.SetTrigger("DestroyHorizontal");
+                    else if (_hand.HandDirection == Direction.Up)
+                        _anim.SetTrigger("DestroyUp");
+                    else _anim.SetTrigger("DestroyDown");
                     OnDestroy();
-                    timeBtwDestroy = destroyCooldown;
+                    _timeBtwDestroy = _destroyDelay;
                 }
             }
-            else timeBtwDestroy -= Time.deltaTime;
+            else _timeBtwDestroy -= Time.deltaTime;
         }
 
         void OnDestroy()
         {
-            Collider2D[] objectsToDestroy =
-                Physics2D.OverlapCircleAll(destroyPos.position, destroyRange, objectToDestroy);
+            _currentDestroyRange =
+                _hand.HandDirection == Direction.Up ? _destroyRangeVertical : _destroyRangeHorizontal;
 
-            print(objectsToDestroy.Length);
-            for (int i = 0; i < objectsToDestroy.Length; i++)
-            {
-                objectsToDestroy[i].GetComponent<EnviromentDestroyable>().ToDestroy();
-            }
+            Collider2D[] objectsToDestroy =
+                Physics2D.OverlapBoxAll(_hand.transform.position, _currentDestroyRange, 0f, _objectToDestroy);
+
+            foreach (var obj in objectsToDestroy)
+                obj.GetComponent<EnviromentDestroyable>().ToDestroy();
+        }
+
+        void OnDrawGizmosSelected()
+        {
+            Gizmos.DrawWireCube(_hand.transform.position, _currentDestroyRange);
         }
     }
 }
