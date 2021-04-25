@@ -12,10 +12,10 @@ namespace Assets.Scripts
         [SerializeField] private float _destroyDelay;
         [SerializeField] private LayerMask _objectToDestroy;
         [SerializeField] private Animator _anim;
-        [SerializeField] private Vector3 _destroyRangeHorizontal = new Vector3(1f, 0.2f, 0);
-        [SerializeField] private Vector3 _destroyRangeVertical = new Vector3(0.2f, 1f, 0);
+        [SerializeField] private Vector3 _destroyRangeHorizontal = new Vector3(0.12f, 0.12f, 0);
+        [SerializeField] private Vector3 _destroyRangeVertical = new Vector3(0.12f, 0.12f, 0);
         [SerializeField] private HandPosScript _hand;
-        private Vector3 _currentDestroyRange = new Vector3(1f, 0.2f, 0);
+        private Vector3 _currentDestroyRange = new Vector3(0.12f, 0.12f, 0);
 
         void FixedUpdate()
         {
@@ -42,14 +42,16 @@ namespace Assets.Scripts
 
             Collider2D[] objectsToDestroy =
                 Physics2D.OverlapBoxAll(_hand.transform.position, _currentDestroyRange, 0f, _objectToDestroy);
+            if (objectsToDestroy.Length > 0)
+                objectsToDestroy[0].GetComponent<EnviromentDestroyable>().ToDestroy();
 
-            foreach (var obj in objectsToDestroy)
-                obj.GetComponent<EnviromentDestroyable>().ToDestroy();
+            /*foreach (var obj in objectsToDestroy)
+                obj.GetComponent<EnviromentDestroyable>().ToDestroy();*/
         }
 
         void OnDrawGizmosSelected()
         {
-            Gizmos.DrawWireCube(_hand.transform.position, _currentDestroyRange);
+            Gizmos.DrawWireCube(_hand.transform.position, new Vector3(0.12f, 0.12f, 0));
         }
     }
 }
