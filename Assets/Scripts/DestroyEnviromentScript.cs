@@ -11,10 +11,12 @@ namespace Assets.Scripts
         private float _timeBtwDestroy;
         [SerializeField] private float _destroyDelay;
         [SerializeField] private LayerMask _objectToDestroy;
+        [SerializeField] private LayerMask _objectToDamage;
         [SerializeField] private Animator _anim;
         [SerializeField] private Vector3 _destroyRangeHorizontal = new Vector3(0.12f, 0.12f, 0);
         [SerializeField] private Vector3 _destroyRangeVertical = new Vector3(0.12f, 0.12f, 0);
         [SerializeField] private HandPosScript _hand;
+        [SerializeField] private float _damage = 5;
         private Vector3 _currentDestroyRange = new Vector3(0.12f, 0.12f, 0);
 
         void FixedUpdate()
@@ -41,12 +43,25 @@ namespace Assets.Scripts
                             break;
                         }
                     }
-
+                    
+                    OnDamage();
                     OnDestroy();
                     _timeBtwDestroy = _destroyDelay;
                 }
             }
             else _timeBtwDestroy -= Time.deltaTime;
+        }
+
+        void OnDamage()
+        {
+            _currentDestroyRange =
+                _hand.HandDirection == Direction.Up ? _destroyRangeVertical : _destroyRangeHorizontal;
+
+            Collider2D[] objectsToDamage =
+                Physics2D.OverlapBoxAll(_hand.transform.position, _currentDestroyRange, 0f, _objectToDamage);
+
+            foreach (var e in objectsToDamage)
+                e.GetComponent<Enemy>().TakeDamage(_damage);
         }
 
         void OnDestroy()

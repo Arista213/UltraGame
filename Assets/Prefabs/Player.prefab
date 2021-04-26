@@ -253,10 +253,14 @@ MonoBehaviour:
   _objectToDestroy:
     serializedVersion: 2
     m_Bits: 64
+  _objectToDamage:
+    serializedVersion: 2
+    m_Bits: 8
   _anim: {fileID: 489175315752747599}
   _destroyRangeHorizontal: {x: 0.2, y: 0.2, z: 0}
   _destroyRangeVertical: {x: 0.2, y: 0.2, z: 0}
   _hand: {fileID: 3169715393897500386}
+  _damage: 5
 --- !u!58 &489175315752747597
 CircleCollider2D:
   m_ObjectHideFlags: 0

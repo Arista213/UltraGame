@@ -12,7 +12,7 @@ namespace Assets.Scripts
         [SerializeField] private float _attackRange;
         [SerializeField] private float _attackDelay;
 
-        void TakeDamage(float damage)
+        public void TakeDamage(float damage)
         {
             _hitpoints -= damage;
             if (_hitpoints <= 0) Destroy(gameObject);
