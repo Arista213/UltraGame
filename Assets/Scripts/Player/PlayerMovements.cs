@@ -6,7 +6,7 @@ namespace Assets.Scripts
 {
     public class PlayerMovements : MonoBehaviour
     {
-        [SerializeField] private float _mMaxSpeed = 3f;
+        [SerializeField] private float _maxSpeed;
         private bool _isFacingRight = true;
         private Animator _anim;
 
@@ -23,7 +23,7 @@ namespace Assets.Scripts
             _anim.SetFloat("Speed", speed);
             
             GetComponent<Rigidbody2D>().velocity =
-                new Vector2(moveX * _mMaxSpeed, moveY * _mMaxSpeed);
+                new Vector2(moveX * _maxSpeed, moveY * _maxSpeed);
 
             if (moveX > 0 && !_isFacingRight)
                 Flip();

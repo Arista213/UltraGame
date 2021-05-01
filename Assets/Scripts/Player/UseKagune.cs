@@ -6,12 +6,12 @@ using UnityEngine;
 
 namespace Assets.Scripts
 {
-    public class DestroyEnviromentScript : MonoBehaviour
+    public class UseKagune : MonoBehaviour
     {
         private float _timeBtwDestroy;
         [SerializeField] private float _destroyDelay;
-        [SerializeField] private LayerMask _objectToDestroy;
-        [SerializeField] private LayerMask _objectToDamage;
+        [SerializeField] private LayerMask _destroyableEnviroment;
+        [SerializeField] private LayerMask _enemy;
         [SerializeField] private Animator _anim;
         [SerializeField] private Vector3 _destroyRangeHorizontal = new Vector3(0.12f, 0.12f, 0);
         [SerializeField] private Vector3 _destroyRangeVertical = new Vector3(0.12f, 0.12f, 0);
@@ -57,10 +57,10 @@ namespace Assets.Scripts
             _currentDestroyRange =
                 _hand.HandDirection == Direction.Up ? _destroyRangeVertical : _destroyRangeHorizontal;
 
-            Collider2D[] objectsToDamage =
-                Physics2D.OverlapBoxAll(_hand.transform.position, _currentDestroyRange, 0f, _objectToDamage);
+            Collider2D[] enemies =
+                Physics2D.OverlapBoxAll(_hand.transform.position, _currentDestroyRange, 0f, _enemy);
 
-            foreach (var e in objectsToDamage)
+            foreach (var e in enemies)
                 e.GetComponent<Enemy>().TakeDamage(_damage);
         }
 
@@ -70,7 +70,7 @@ namespace Assets.Scripts
                 _hand.HandDirection == Direction.Up ? _destroyRangeVertical : _destroyRangeHorizontal;
 
             Collider2D[] objectsToDestroy =
-                Physics2D.OverlapBoxAll(_hand.transform.position, _currentDestroyRange, 0f, _objectToDestroy);
+                Physics2D.OverlapBoxAll(_hand.transform.position, _currentDestroyRange, 0f, _destroyableEnviroment);
             if (objectsToDestroy.Length > 0)
             {
                 var minDistanceBtwPlayer = float.MaxValue;
