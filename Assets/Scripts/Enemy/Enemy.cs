@@ -6,6 +6,7 @@ namespace Assets.Scripts
 {
     public class Enemy : MonoBehaviour
     {
+        [Header("Attributes")]
         [SerializeField] private float _hitpoints;
         [SerializeField] private float _damage;
         [SerializeField] private float _maxSpeed;

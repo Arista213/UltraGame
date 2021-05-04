@@ -6,9 +6,9 @@ namespace Assets.Scripts
 {
     public class Bullet : MonoBehaviour
     {
+        [SerializeField] private float _speed = 30f;
         private Transform _target;
         private float _damage;
-        private float _speed = 3f;
         private float _rotationSpeed = 50f;
 
         public void Seek(Transform target, float damage)

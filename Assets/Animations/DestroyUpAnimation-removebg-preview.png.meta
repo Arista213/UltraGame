@@ -118,12 +118,12 @@ TextureImporter:
       name: DestroyUpAnimation-removebg-preview_0
       rect:
         serializedVersion: 2
-        x: 9
+        x: 10
         y: 5
         width: 110
         height: 177
       alignment: 9
-      pivot: {x: 0.48223564, y: 0.57727975}
+      pivot: {x: 0.50873137, y: 0.5278811}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -139,12 +139,12 @@ TextureImporter:
       name: DestroyUpAnimation-removebg-preview_1
       rect:
         serializedVersion: 2
-        x: 159
+        x: 161
         y: 17
         width: 141
         height: 140
       alignment: 9
-      pivot: {x: 0.3960593, y: 0.6395767}
+      pivot: {x: 0.36712074, y: 0.53548646}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -161,11 +161,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 331
-        y: 13
+        y: 14
         width: 196
         height: 298
       alignment: 9
-      pivot: {x: 0.36042273, y: 0.30655986}
+      pivot: {x: 0.3336568, y: 0.24396592}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -186,7 +186,7 @@ TextureImporter:
         width: 162
         height: 276
       alignment: 9
-      pivot: {x: 0.3311289, y: 0.3088406}
+      pivot: {x: 0.32033435, y: 0.24759331}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

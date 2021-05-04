@@ -58,7 +58,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 70
+  spritePixelsToUnits: 60
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -120,10 +120,10 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 335
+        width: 343.5
         height: 181
       alignment: 9
-      pivot: {x: 0.22863744, y: 0.48953655}
+      pivot: {x: 0.22090688, y: 0.46697155}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -139,12 +139,12 @@ TextureImporter:
       name: DestroyObjectAnimation_1
       rect:
         serializedVersion: 2
-        x: 371
-        y: 21
-        width: 294
-        height: 145
+        x: 343
+        y: 10
+        width: 344
+        height: 171
       alignment: 9
-      pivot: {x: 0.12791215, y: 0.51033485}
+      pivot: {x: 0.18686214, y: 0.4731511}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -161,11 +161,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 686
-        y: 13
-        width: 309
-        height: 149
+        y: 0
+        width: 316
+        height: 181
       alignment: 9
-      pivot: {x: 0.12415124, y: 0.5201148}
+      pivot: {x: 0.1146163, y: 0.4684543}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -181,12 +181,12 @@ TextureImporter:
       name: DestroyObjectAnimation_3
       rect:
         serializedVersion: 2
-        x: 1004
-        y: 13
-        width: 359
-        height: 149
+        x: 1002
+        y: 0
+        width: 371
+        height: 181
       alignment: 9
-      pivot: {x: 0.111797705, y: 0.52514344}
+      pivot: {x: 0.099433675, y: 0.4871708}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
