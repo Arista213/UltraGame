@@ -6,17 +6,17 @@ namespace Assets.Scripts
 {
     public class CannonTurret : Turret
     {
-        private float _rotationSpeed = 3f;
+        //private float _rotationSpeed = 3f;
 
-        [SerializeField] private Transform _partToRotate;
+        //[SerializeField] private Transform _partToRotate;
 
-        void RotateTower()
-        {
-            Vector3 vectorToTarget = Target.position - transform.position;
-            float angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg;
-            Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
-            transform.rotation = Quaternion.Slerp(transform.rotation, q, Time.deltaTime * _rotationSpeed);
-        }
+        // void RotateTower()
+        // {
+        //     Vector3 vectorToTarget = Target.position - transform.position;
+        //     float angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg;
+        //     Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
+        //     transform.rotation = Quaternion.Slerp(transform.rotation, q, Time.deltaTime * _rotationSpeed);
+        // }
 
         void FixedUpdate()
         {
@@ -25,7 +25,7 @@ namespace Assets.Scripts
                 FireCountdown -= Time.deltaTime;
                 return;
             }
-            RotateTower();
+            //RotateTower();
 
             if (FireCountdown <= 0)
             {

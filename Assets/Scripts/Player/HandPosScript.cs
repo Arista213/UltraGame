@@ -2,23 +2,17 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Assets.Scripts;
+using Assets.Scripts.Player;
 using UnityEngine;
 
 namespace Assets.Scripts
 {
-    public enum Direction
-    {
-        Up,
-        Down,
-        Left,
-        Right
-    }
-
     public class HandPosScript : MonoBehaviour
     {
-        [SerializeField] private readonly Vector3 _verticalHandPos = new Vector3(0f, 0.4f, 0f);
-        [SerializeField] private readonly Vector3 _horizontalHandPos = new Vector3(0.4f, 0f, 0f);
-        [SerializeField] private const float ValueOfChangeHand = 0.1f;
+        [SerializeField] private const float _handRange = 0.2f;
+        private Vector3 _verticalHandPos = new Vector3(0f, _handRange, 0f);
+        private Vector3 _horizontalHandPos = new Vector3(_handRange, 0f, 0f);
+        private const float ValueOfChangeHand = 0.1f;
         [SerializeField] private Transform _playerTransform;
         [NonSerialized] public Direction HandDirection;
 
