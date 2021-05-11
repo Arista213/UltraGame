@@ -1,15 +1,13 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+using Assets.Scripts;
 using UnityEngine;
 
-namespace Assets.Scripts
+namespace Turrets
 {
-    public class Turret : MonoBehaviour
+    public class Turret : Damageable
     {
-        [Header("Attributes")]
-        [SerializeField] protected float MaxHealth = 20f;
-        [SerializeField] protected float Range = 2f;
+        [Header("Attributes")] [SerializeField]
+        protected float Range = 2f;
+
         [SerializeField] protected float Damage = 5f;
         [SerializeField] protected float FireRate = 1f;
         protected float FireCountdown = 0f;
@@ -61,13 +59,6 @@ namespace Assets.Scripts
             {
                 bullet.Seek(Target, Damage);
             }
-        }
-
-        void TakeDamage(float damage)
-        {
-            MaxHealth -= damage;
-            if (MaxHealth <= damage)
-                Destroy(gameObject);
         }
 
         void OnDrawGizmos()

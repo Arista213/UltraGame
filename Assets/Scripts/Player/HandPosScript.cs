@@ -1,11 +1,7 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using Assets.Scripts;
-using Assets.Scripts.Player;
 using UnityEngine;
 
-namespace Assets.Scripts
+namespace Player
 {
     public class HandPosScript : MonoBehaviour
     {
@@ -17,7 +13,6 @@ namespace Assets.Scripts
         private void Start()
         {
             _currentHandPosition = transform.position - _playerTransform.position;
-            print(_currentHandPosition);
         }
 
         private void FixedUpdate()

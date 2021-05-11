@@ -1,29 +1,16 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Assets.Scripts
 {
-    public class Enemy : MonoBehaviour
+    public class Enemy : Damageable
     {
-        [Header("Attributes")]
-        [SerializeField] private float _hitpoints;
         [SerializeField] private float _damage;
         [SerializeField] private float _maxSpeed;
         [SerializeField] private float _attackRange;
         [SerializeField] private float _attackDelay;
-
-        public void TakeDamage(float damage)
-        {
-            _hitpoints -= damage;
-            if (_hitpoints <= 0) Destroy(gameObject);
-        }
-
-        void FixedUpdate()
-        {
-            var playerPosition = GameObject.FindGameObjectWithTag("Player").transform.position;
-            Vector2 direction = (playerPosition - transform.position).normalized;
-            GetComponent<Rigidbody2D>().velocity = direction * _maxSpeed;
-        }
     }
 }

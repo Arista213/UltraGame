@@ -1,11 +1,7 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Threading;
-using Assets.Scripts.Player;
+using Assets.Scripts;
 using UnityEngine;
 
-namespace Assets.Scripts
+namespace Player
 {
     public class UseKagune : MonoBehaviour
     {
@@ -70,7 +66,7 @@ namespace Assets.Scripts
                 Physics2D.OverlapBoxAll(_hand.transform.position, _currentDestroyRange, 0f, _enemy);
 
             foreach (var e in enemies)
-                e.GetComponent<Enemy>().TakeDamage(_damage);
+                e.GetComponent<Assets.Scripts.Enemy>().TakeDamage(_damage);
         }
 
         void OnDestroy()
@@ -94,7 +90,7 @@ namespace Assets.Scripts
                     }
                 }
 
-                currentObjWithMinDistance.GetComponent<EnviromentDestroyable>().ToDestroy();
+                currentObjWithMinDistance.GetComponent<Destroyable>().ToDestroy();
             }
         }
 
