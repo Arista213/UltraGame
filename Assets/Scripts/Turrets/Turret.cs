@@ -1,4 +1,5 @@
 using Assets.Scripts;
+using General;
 using UnityEngine;
 
 namespace Turrets
@@ -24,6 +25,7 @@ namespace Turrets
 
         void Start()
         {
+            Map.PlayerSideTransforms.Add(transform);
             InvokeRepeating("UpdateTarget", 0f, 0.5f);
         }
 

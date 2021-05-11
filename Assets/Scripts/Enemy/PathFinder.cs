@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using General;
 using UnityEngine;
 
 namespace Enemy
@@ -22,12 +23,31 @@ namespace Enemy
     public class PathFinder : MonoBehaviour
     {
         private const float Turn = 0.16f;
+        private LineRenderer _lr;
 
         [SerializeField] private LayerMask _solidLayer;
 
-        //[SerializeField] private Transform _targetTransform;
-        private Transform _targetTransform;
+        private Transform _playerTransform;
+        private List<Transform> _targets = Map.PlayerSideTransforms;
         private List<Vector3> _moveList = new List<Vector3>();
+
+        public static Vector3 RoundVector(Vector3 vector)
+        {
+            return new Vector3((float) Math.Round(vector.x / 0.16f) * 0.16f + 0.08f,
+                (float) Math.Round(vector.y / 0.16f) * 0.16f + 0.08f);
+        }
+
+        private void Start()
+        {
+            _playerTransform = GameObject.FindWithTag("Player").transform;
+            _moveList.Add(transform.position);
+            InvokeRepeating(nameof(UpdateMove), 0f, 0.8f);
+        }
+
+        private void FixedUpdate()
+        {
+            SeekTarget();
+        }
 
         private readonly List<Vector3> _possibleMoves = new List<Vector3>
         {
@@ -37,7 +57,7 @@ namespace Enemy
             new Vector3(0, Turn),
         };
 
-        void InitPossibleMoves()
+        private void InitPossibleMoves()
         {
             var turn = 0.16f;
             for (float i = -turn; i <= turn; i += turn)
@@ -46,39 +66,37 @@ namespace Enemy
                     _possibleMoves.Add(new Vector3(i, j));
         }
 
-        private void Start()
-        {
-            _targetTransform = GameObject.FindWithTag("Player").transform;
-            _moveList.Add(transform.position);
-            InvokeRepeating(nameof(UpdateMove), 0f, 1f);
-        }
 
-        public List<Vector3> FindShortestPath(Vector3 start, Vector3 target)
+        public List<Vector3> FindShortestPath(Vector3 initialPosition)
         {
+            var start = RoundVector(initialPosition);
+            //var target = GetNearestTarget();
+            var target = _playerTransform.position;
+            var end = RoundVector(target);
             var visitedPoints = new HashSet<Vector3> {start};
             var queue = new Queue<SinglyLinkedList<Vector3>>();
             queue.Enqueue(new SinglyLinkedList<Vector3>(start, null));
+
             while (queue.Count > 0)
             {
                 var currentPoint = queue.Dequeue();
-                if ((currentPoint.Value - target).magnitude <= 0.1f) return new List<Vector3> {target};
+                if ((currentPoint.Value - end).magnitude <= 0.1f) return new List<Vector3> {end};
                 var p = _possibleMoves.Select(nextMove => currentPoint.Value + nextMove)
-                    .Where(nextPoint => (nextPoint - target).magnitude <= 0.08f ||
-                                        (!Physics2D.OverlapBox(nextPoint, new Vector2(0.02f, 0.02f), _solidLayer)
-                                         && !visitedPoints.Contains(nextPoint))).ToList();
+                    .Where(nextPoint => (nextPoint - end).magnitude <= 0.16f ||
+                                        !Physics2D.OverlapCircle(nextPoint, 0.01f, _solidLayer)
+                                        && !visitedPoints.Contains(nextPoint)).ToList();
                 foreach (var nextPoint in p)
                 {
-                    if (queue.Count > 100)
+                    if (queue.Count > 400)
                     {
-                        print("Sheeet");
                         return default;
                     }
 
                     var tempSinglyLinkedList = new SinglyLinkedList<Vector3>(nextPoint, currentPoint);
                     queue.Enqueue(tempSinglyLinkedList);
-                    if ((target - nextPoint).magnitude <= 0.16f)
+                    if ((end - nextPoint).magnitude <= 0.08f)
                     {
-                        return GetMoveList(queue.Last());
+                        return GetMoveList(queue.Last(), target);
                     }
 
                     visitedPoints.Add(nextPoint);
@@ -86,41 +104,69 @@ namespace Enemy
             }
 
             print("PlayerNotFound");
-            return null;
+            return default;
         }
 
-        private List<Vector3> GetMoveList(SinglyLinkedList<Vector3> path)
+        private Vector3 GetNearestTarget()
+        {
+            var nearest = _playerTransform.position;
+            foreach (var target in _targets)
+            {
+                if ((target.position - transform.position).magnitude <
+                    (nearest - transform.position).magnitude)
+                    nearest = target.position;
+            }
+
+            return nearest;
+        }
+
+        private List<Vector3> GetMoveList(SinglyLinkedList<Vector3> path, Vector3 target)
         {
             if (path == null) return null;
             var result = new List<Vector3>();
             result.Add(path.Value);
-            var previous = path.Previous;
-            while (previous != null)
+            if (path.Previous != null)
             {
-                result.Add(previous.Value);
-                previous = previous.Previous;
+                var previous = path.Previous;
+                while (previous != null)
+                {
+                    result.Add(previous.Value);
+                    previous = previous.Previous;
+                }
+
+                result.Reverse();
+                result.Add(target);
             }
 
-            result.Reverse();
+            DrawPath(result);
             return result;
         }
 
         private void UpdateMove()
         {
-            _moveList = FindShortestPath(transform.position, _targetTransform.position);
+            _moveList = FindShortestPath(transform.position);
         }
 
-        // private void PrintPath()
-        // {
-        //     if (_moveList != null)
-        //         foreach (var e in _moveList)
-        //         {
-        //             print(e);
-        //         }
-        // }
+        private void DrawPath(List<Vector3> path)
+        {
+            if (path != null && path.Any())
+            {
+                var prev = transform.position;
+                foreach (var e in path)
+                {
+                    DrawLine(prev, e, Color.green);
+                    prev = e;
+                }
+            }
+        }
 
         private void SeekTarget()
         {
+            if (_moveList == null)
+            {
+                return;
+            }
+
             var nextMove = _moveList.FirstOrDefault();
             if (nextMove != default)
             {
@@ -132,9 +178,18 @@ namespace Enemy
                 GetComponent<Rigidbody2D>().velocity = default;
         }
 
-        private void FixedUpdate()
+        void DrawLine(Vector3 start, Vector3 end, Color color, float duration = 1f)
         {
-            SeekTarget();
+            GameObject myLine = new GameObject();
+            myLine.transform.position = start;
+            myLine.AddComponent<LineRenderer>();
+            LineRenderer lr = myLine.GetComponent<LineRenderer>();
+            lr.material = new Material(Shader.Find("Sprites/Default"));
+            lr.SetColors(color, color);
+            lr.SetWidth(0.004f, 0.004f);
+            lr.SetPosition(0, start);
+            lr.SetPosition(1, end);
+            Destroy(myLine, duration);
         }
     }
 }
