@@ -1,28 +1,44 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using General;
+using Player;
+using TMPro;
 using UnityEngine;
 
 namespace Assets.Scripts
 {
-    public class Enemy : MonoBehaviour
+    public class Enemy : Damageable
     {
-        [SerializeField] private float _hitpoints;
         [SerializeField] private float _damage;
-        [SerializeField] private float _maxSpeed;
         [SerializeField] private float _attackRange;
         [SerializeField] private float _attackDelay;
+        [SerializeField] private LayerMask _playerSideMask;
+        [SerializeField] public float MaxSpeed;
+        private float _attackCooldown;
 
-        public void TakeDamage(float damage)
+        private void FixedUpdate()
         {
-            _hitpoints -= damage;
-            if (_hitpoints <= 0) Destroy(gameObject);
+            if (_attackCooldown <= 0)
+            {
+                TryToDamage();
+                _attackCooldown = _attackDelay;
+            }
+            else _attackCooldown -= Time.deltaTime;
         }
 
-        void FixedUpdate()
+        private void TryToDamage()
         {
-            var playerPosition = GameObject.FindGameObjectWithTag("Player").transform.position;
-            Vector2 direction = (playerPosition - transform.position).normalized;
-            GetComponent<Rigidbody2D>().velocity = direction * _maxSpeed;
+            Collider2D target =
+                Physics2D.OverlapCircle(transform.position, _attackRange, _playerSideMask);
+            if (target != null)
+                target.GetComponent<Damageable>().TakeDamage(_damage);
+        }
+
+        void OnDrawGizmosSelected()
+        {
+            Gizmos.DrawWireSphere(transform.position, _attackRange);
         }
     }
 }

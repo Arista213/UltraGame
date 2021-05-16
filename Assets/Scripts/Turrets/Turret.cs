@@ -1,18 +1,17 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+using Assets.Scripts;
+using General;
 using UnityEngine;
 
-namespace Assets.Scripts
+namespace Turrets
 {
-    public class Turret : MonoBehaviour
+    public class Turret : Damageable
     {
-        [Header("Attributes")]
-        [SerializeField] protected float MaxHealth = 20f;
-        [SerializeField] protected float Range = 2f;
+        [Header("Attributes")] [SerializeField]
+        protected float Range = 2f;
+
         [SerializeField] protected float Damage = 5f;
         [SerializeField] protected float FireRate = 1f;
-        protected float FireCountdown = 0f;
+        protected float FireCooldown = 0f;
 
         [Header("Unity Setup Fields")] [SerializeField]
         protected Transform Target;
@@ -26,6 +25,8 @@ namespace Assets.Scripts
 
         void Start()
         {
+            Map.Add(transform.position);
+            print(Map.PlayerSideTransforms.Count);
             InvokeRepeating("UpdateTarget", 0f, 0.5f);
         }
 
@@ -40,17 +41,17 @@ namespace Assets.Scripts
         {
             if (Target == null)
             {
-                FireCountdown -= Time.deltaTime;
+                FireCooldown -= Time.deltaTime;
                 return;
             }
 
-            if (FireCountdown <= 0)
+            if (FireCooldown <= 0)
             {
                 Shoot();
-                FireCountdown = FireRate;
+                FireCooldown = FireRate;
             }
             else
-                FireCountdown -= Time.deltaTime;
+                FireCooldown -= Time.deltaTime;
         }
 
         protected void Shoot()
@@ -61,13 +62,6 @@ namespace Assets.Scripts
             {
                 bullet.Seek(Target, Damage);
             }
-        }
-
-        void TakeDamage(float damage)
-        {
-            MaxHealth -= damage;
-            if (MaxHealth <= damage)
-                Destroy(gameObject);
         }
 
         void OnDrawGizmos()

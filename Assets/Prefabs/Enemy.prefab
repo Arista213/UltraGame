@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2651441585283161555}
   - component: {fileID: 956275703896349953}
   - component: {fileID: 4910037729312205980}
+  - component: {fileID: -6663722856617296976}
   m_Layer: 3
   m_Name: Enemy
   m_TagString: Untagged
@@ -28,8 +29,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1392457712922902302}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.7184, y: -1.5472, z: 0}
-  m_LocalScale: {x: 0.25, y: 0.25, z: 1}
+  m_LocalPosition: {x: -4.7982, y: -1.627, z: 0}
+  m_LocalScale: {x: 0.0713628, y: 0.0713628, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -74,8 +75,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
-  m_Color: {r: 1, g: 0.30566037, b: 0.30566037, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 798e666e9b23ffd4b83c4cc6972db86d, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -84,7 +85,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!58 &2651441585283161555
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -100,7 +101,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.6
 --- !u!114 &956275703896349953
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -113,11 +114,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d57c6113b7bfdbf46bcb2637e2a2b927, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hitpoints: 20
-  _damage: 10
-  _maxSpeed: 1
+  MaxHealth: 20
+  Health: 0
+  _damage: 5
   _attackRange: 0.2
   _attackDelay: 1
+  _playerSideMask:
+    serializedVersion: 2
+    m_Bits: 512
+  MaxSpeed: 0.3
 --- !u!50 &4910037729312205980
 Rigidbody2D:
   serializedVersion: 4
@@ -138,4 +143,19 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
+--- !u!114 &-6663722856617296976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1392457712922902302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bd6af8a32041cd43a7c311acf7b6294, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _solidLayer:
+    serializedVersion: 2
+    m_Bits: 320

@@ -13,8 +13,8 @@ TagManager:
   - UI
   - ObjectToDestroy
   - Player
-  - 
-  - 
+  - Impassable
+  - PlayerSide
   - 
   - 
   - 
@@ -38,12 +38,15 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Ground
+    uniqueID: 2519013169
+    locked: 0
+  - name: Water
+    uniqueID: 2096996745
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: 1
-    uniqueID: 2701085165
-    locked: 0
-  - name: New Layer
-    uniqueID: 2519013169
+  - name: Objects
+    uniqueID: 149072145
     locked: 0

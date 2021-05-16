@@ -1,14 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using General;
 using UnityEngine;
 
 namespace Assets.Scripts
 {
     public class Bullet : MonoBehaviour
     {
+        [SerializeField] private float _speed = 30f;
         private Transform _target;
         private float _damage;
-        private float _speed = 3f;
         private float _rotationSpeed = 50f;
 
         public void Seek(Transform target, float damage)
@@ -41,7 +42,7 @@ namespace Assets.Scripts
 
         void HitTarget()
         {
-            _target.gameObject.GetComponent<Enemy>().TakeDamage(_damage);
+            _target.gameObject.GetComponent<Damageable>().TakeDamage(_damage);
             Destroy(gameObject);
         }
 
