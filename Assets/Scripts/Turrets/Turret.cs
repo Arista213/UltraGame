@@ -11,7 +11,7 @@ namespace Turrets
 
         [SerializeField] protected float Damage = 5f;
         [SerializeField] protected float FireRate = 1f;
-        protected float FireCountdown = 0f;
+        protected float FireCooldown = 0f;
 
         [Header("Unity Setup Fields")] [SerializeField]
         protected Transform Target;
@@ -25,7 +25,8 @@ namespace Turrets
 
         void Start()
         {
-            Map.PlayerSideTransforms.Add(transform);
+            Map.Add(transform.position);
+            print(Map.PlayerSideTransforms.Count);
             InvokeRepeating("UpdateTarget", 0f, 0.5f);
         }
 
@@ -40,17 +41,17 @@ namespace Turrets
         {
             if (Target == null)
             {
-                FireCountdown -= Time.deltaTime;
+                FireCooldown -= Time.deltaTime;
                 return;
             }
 
-            if (FireCountdown <= 0)
+            if (FireCooldown <= 0)
             {
                 Shoot();
-                FireCountdown = FireRate;
+                FireCooldown = FireRate;
             }
             else
-                FireCountdown -= Time.deltaTime;
+                FireCooldown -= Time.deltaTime;
         }
 
         protected void Shoot()

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2651441585283161555}
   - component: {fileID: 956275703896349953}
   - component: {fileID: 4910037729312205980}
-  - component: {fileID: -6663722856617296976}
+  - component: {fileID: 8843238848342450442}
   m_Layer: 3
   m_Name: Enemy
   m_TagString: Untagged
@@ -114,11 +114,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d57c6113b7bfdbf46bcb2637e2a2b927, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealth: 20
-  _damage: 10
-  _maxSpeed: 16
-  _attackRange: 0.2
+  MaxHealth: 200
+  Health: 0
+  _damage: 5
+  _maxSpeed: 0.3
+  _attackRange: 0.1
   _attackDelay: 1
+  _playerSideMask:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!50 &4910037729312205980
 Rigidbody2D:
   serializedVersion: 4
@@ -140,18 +144,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &-6663722856617296976
-MonoBehaviour:
+--- !u!95 &8843238848342450442
+Animator:
+  serializedVersion: 3
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1392457712922902302}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0bd6af8a32041cd43a7c311acf7b6294, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _solidLayer:
-    serializedVersion: 2
-    m_Bits: 320
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3c4c4d0c2610853458972dda1b9bea0e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

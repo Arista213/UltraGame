@@ -52,6 +52,7 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\General\Map.cs" />
      <Compile Include="Assets\Scripts\Enemy\WaveSpawner.cs" />
      <Compile Include="Assets\Scripts\General\Damageable.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerMovements.cs" />
@@ -63,12 +64,13 @@
      <Compile Include="Assets\Scripts\Turrets\CannonTurret.cs" />
      <Compile Include="Assets\Scripts\Turrets\Turret.cs" />
      <Compile Include="Assets\Scripts\Player\Player.cs" />
+     <Compile Include="Assets\Scripts\General\Factory.cs" />
      <Compile Include="Assets\Scripts\Enemy\PathFinder.cs" />
      <Compile Include="Assets\Scripts\Enemy\Enemy.cs" />
      <Compile Include="Assets\Scripts\General\Destroyable.cs" />
      <Compile Include="Assets\Scripts\Turrets\Bullet.cs" />
-     <Compile Include="Assets\Scripts\General\Map.cs" />
-     <Compile Include="Assets\Scripts\General\Factory.cs" />
+     <None Include="Assets\craftpix-891178-free-golem-tiny-style-2d-character-sprites\TXT\license.txt" />
+     <None Include="Assets\craftpix-891178-free-golem-tiny-style-2d-character-sprites\TXT\readme.txt" />
      <None Include="Assets\Materials\PixelSnap.shader" />
  <Reference Include="UnityEngine">
  <HintPath>D:/Unity/2020.3.3f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>

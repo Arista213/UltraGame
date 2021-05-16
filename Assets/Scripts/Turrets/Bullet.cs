@@ -1,6 +1,9 @@
+using System.Collections;
+using System.Collections.Generic;
+using General;
 using UnityEngine;
 
-namespace Turrets
+namespace Assets.Scripts
 {
     public class Bullet : MonoBehaviour
     {
@@ -39,7 +42,7 @@ namespace Turrets
 
         void HitTarget()
         {
-            _target.gameObject.GetComponent<Assets.Scripts.Enemy>().TakeDamage(_damage);
+            _target.gameObject.GetComponent<Damageable>().TakeDamage(_damage);
             Destroy(gameObject);
         }
 

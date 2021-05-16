@@ -1,3 +1,8 @@
+using System;
+using System.Data;
+using System.Linq;
+using Enemy;
+using Turrets;
 using UnityEngine;
 
 namespace General
@@ -5,12 +10,30 @@ namespace General
     public class Damageable : MonoBehaviour
     {
         [Header("Attributes")] [SerializeField]
-        protected float MaxHealth;
+        public float MaxHealth;
+
+        public float Health;
+
+        public void Awake()
+        {
+            Health = MaxHealth;
+        }
 
         public void TakeDamage(float damage)
         {
-            MaxHealth -= damage;
-            if (MaxHealth <= 0) Destroy(gameObject);
+            Health -= damage;
+            if (Health <= 0)
+            {
+                Turret turret;
+                Player.Player player;
+                if (gameObject.TryGetComponent(out turret))
+                    Map.Remove(gameObject.transform.position);
+                else if (gameObject.TryGetComponent(out player))
+                    Enemy.Enemy.PlayerStatus = false;
+                
+
+                Destroy(gameObject);
+            }
         }
     }
 }
