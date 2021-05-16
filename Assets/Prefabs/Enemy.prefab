@@ -115,10 +115,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxHealth: 20
-  _damage: 10
+  _damage: 5
   _maxSpeed: 16
   _attackRange: 0.2
   _attackDelay: 1
+  _playerSideMask:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!50 &4910037729312205980
 Rigidbody2D:
   serializedVersion: 4

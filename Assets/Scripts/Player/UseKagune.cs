@@ -6,7 +6,7 @@ namespace Player
 {
     public class UseKagune : MonoBehaviour
     {
-        private float _timeBtwDestroy;
+        private float _attackCooldown;
 
         [Header("Attributes")] [SerializeField]
         private float _destroyDelay;
@@ -27,7 +27,7 @@ namespace Player
 
         void FixedUpdate()
         {
-            if (_timeBtwDestroy <= 0)
+            if (_attackCooldown <= 0)
             {
                 if (Input.GetKey(KeyCode.Space))
                 {
@@ -50,27 +50,30 @@ namespace Player
                         }
                     }
 
-                    OnDamage();
-                    OnDestroy();
-                    _timeBtwDestroy = _destroyDelay;
+                    TryToDamage();
+                    TryToDestroy();
+                    _attackCooldown = _destroyDelay;
                 }
             }
-            else _timeBtwDestroy -= Time.deltaTime;
+            else _attackCooldown -= Time.deltaTime;
         }
 
-        void OnDamage()
+        void TryToDamage()
         {
-            _currentDestroyRange =
-                _hand.HandDirection == Direction.Up ? _destroyRangeVertical : _destroyRangeHorizontal;
+            // _currentDestroyRange =
+            //     _hand.HandDirection == Direction.Up ? _destroyRangeVertical : _destroyRangeHorizontal;
+            //
+            // Collider2D enemy = Physics2D.OverlapBox(_hand.transform.position, _currentDestroyRange, 0f, _enemy);
+            // enemy.GetComponent<Damageable>().TakeDamage(_damage);
 
             Collider2D[] enemies =
                 Physics2D.OverlapBoxAll(_hand.transform.position, _currentDestroyRange, 0f, _enemy);
-
+            
             foreach (var e in enemies)
                 e.GetComponent<Assets.Scripts.Enemy>().TakeDamage(_damage);
         }
 
-        void OnDestroy()
+        void TryToDestroy()
         {
             _currentDestroyRange =
                 _hand.HandDirection == Direction.Up ? _destroyRangeVertical : _destroyRangeHorizontal;
