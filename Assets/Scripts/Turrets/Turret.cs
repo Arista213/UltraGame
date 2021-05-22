@@ -28,7 +28,6 @@ namespace Turrets
         void Start()
         {
             Map.Add(transform.position);
-            print(Map.PlayerSideTransforms.Count);
             InvokeRepeating("UpdateTarget", 0f, 0.5f);
         }
 

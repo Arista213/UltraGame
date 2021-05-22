@@ -16,6 +16,8 @@ namespace Enemy
         [SerializeField] private LayerMask _playerSideMask;
 
         [SerializeField] private Animator _anim;
+        [SerializeField] private AudioSource _audioSource;
+        [SerializeField] private AudioClip _damageSound;
         [NonSerialized] public static bool PlayerStatus = true;
         private Rigidbody2D _rigidbody2D;
         private List<Vector3> _moveList = new List<Vector3>();
@@ -58,7 +60,7 @@ namespace Enemy
         private void UpdateMoveList()
         {
             _moveList = Map.PathFinder.FindShortestPath(transform.position);
-            //DrawPath(_moveList, transform.position);
+            DrawPath(_moveList, transform.position);
         }
 
         private void CheckDamageStatus()
@@ -77,6 +79,7 @@ namespace Enemy
                 Physics2D.OverlapCircle(transform.position, _attackRange, _playerSideMask);
             if (target != null)
             {
+                _audioSource.PlayOneShot(_damageSound);
                 _anim.SetTrigger("Attack");
                 target.GetComponent<Damageable>().TakeDamage(_damage);
             }
