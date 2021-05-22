@@ -15,12 +15,13 @@ namespace Enemy
 
         [SerializeField] private LayerMask _playerSideMask;
 
-        //[SerializeField] private Animator _anim;
+        [SerializeField] private Animator _anim;
         [NonSerialized] public static bool PlayerStatus = true;
         private Rigidbody2D _rigidbody2D;
         private List<Vector3> _moveList = new List<Vector3>();
         private bool _isFacingRight = true;
         private float _attackCooldown;
+        private bool _alive = true;
 
         private void Start()
         {
@@ -30,19 +31,34 @@ namespace Enemy
 
         private void FixedUpdate()
         {
-            CheckDamageStatus();
-            if (PlayerStatus)
-                SeekTarget();
-            else
+            if (_alive)
             {
-                CancelInvoke(nameof(UpdateMoveList));
+                CheckDamageStatus();
+                if (PlayerStatus)
+                    SeekTarget();
+                else
+                {
+                    CancelInvoke(nameof(UpdateMoveList));
+                }
+            }
+        }
+
+        public override void TakeDamage(float damage)
+        {
+            Health -= damage;
+            if (Health <= 0)
+            {
+                _rigidbody2D.velocity = default;
+                _anim.SetTrigger("Dead");
+                _alive = false;
+                Destroy(gameObject, 0.5f);
             }
         }
 
         private void UpdateMoveList()
         {
             _moveList = Map.PathFinder.FindShortestPath(transform.position);
-            DrawPath(_moveList, transform.position);
+            //DrawPath(_moveList, transform.position);
         }
 
         private void CheckDamageStatus()
@@ -61,20 +77,21 @@ namespace Enemy
                 Physics2D.OverlapCircle(transform.position, _attackRange, _playerSideMask);
             if (target != null)
             {
-                //_anim.SetTrigger("Damage");
+                _anim.SetTrigger("Attack");
                 target.GetComponent<Damageable>().TakeDamage(_damage);
             }
         }
 
         private void Move(Vector3 nextMove)
         {
+            _anim.SetFloat("Moving", _rigidbody2D.velocity.magnitude);
             var position = transform.position;
             _rigidbody2D.velocity = (nextMove - position).normalized * _maxSpeed;
             var dirX = nextMove.x - position.x;
 
-            if (dirX > 0 && _isFacingRight)
+            if (dirX > 0 && !_isFacingRight)
                 Flip();
-            else if (dirX < 0 && !_isFacingRight)
+            else if (dirX < 0 && _isFacingRight)
                 Flip();
         }
 
@@ -101,7 +118,6 @@ namespace Enemy
                     _rigidbody2D.velocity = default;
             }
         }
-
 
         private void Flip()
         {

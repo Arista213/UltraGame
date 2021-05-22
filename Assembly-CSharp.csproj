@@ -70,6 +70,7 @@
      <Compile Include="Assets\Scripts\General\Destroyable.cs" />
      <Compile Include="Assets\Scripts\Turrets\Bullet.cs" />
      <None Include="Assets\craftpix-891178-free-golem-tiny-style-2d-character-sprites\TXT\license.txt" />
+     <None Include="Assets\ShootingSound\ReadMe.txt" />
      <None Include="Assets\craftpix-891178-free-golem-tiny-style-2d-character-sprites\TXT\readme.txt" />
      <None Include="Assets\Materials\PixelSnap.shader" />
  <Reference Include="UnityEngine">
