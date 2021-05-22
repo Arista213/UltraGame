@@ -18,9 +18,7 @@ namespace Player
         public void FindPlayer()
         {
             player = GameObject.FindGameObjectWithTag("Player").transform;
-            transform.Translate(new Vector3(player.position.x, player.position.y, transform.position.z))    ;
-            // transform.position = new Vector3(player.position.x, player.position.y,
-            //     transform.position.z);
+            transform.position = new Vector3(player.position.x, player.position.y, transform.position.z);
         }
 
         void Update()

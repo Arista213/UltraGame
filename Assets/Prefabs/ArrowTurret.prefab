@@ -144,10 +144,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a10eb14c2d5d10a44bc9d539f55b12e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 0
+  Health: 50
   Range: 0.6
-  Damage: 3
-  FireRate: 1
+  Damage: 5
+  FireRate: 2
   Target: {fileID: 0}
   Cannon: {fileID: 4669186526942985722}
   Enemy:
@@ -168,7 +168,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.5
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 0
   Mute: 0

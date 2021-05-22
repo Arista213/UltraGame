@@ -13,11 +13,7 @@ public class Wave
 public class WaveSpawner : MonoBehaviour
 {
     public static int EnemiesAlive = 0;
-
-    public Wave[] waves;
-
-    public Transform spawnPoint;
-
+    [SerializeField] private Wave[] waves;
     public float timeBetweenWaves = 5f;
     private float _countdown = 2f;
 
@@ -73,6 +69,6 @@ public class WaveSpawner : MonoBehaviour
 
     void SpawnEnemy(GameObject enemy)
     {
-        Instantiate(enemy, spawnPoint.position, spawnPoint.rotation);
+        Instantiate(enemy, transform.position, transform.rotation);
     }
 }
