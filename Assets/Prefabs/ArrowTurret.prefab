@@ -146,7 +146,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Health: 50
   Range: 0.6
-  Damage: 5
+  Damage: 10
   FireRate: 2
   Target: {fileID: 0}
   Cannon: {fileID: 4669186526942985722}
