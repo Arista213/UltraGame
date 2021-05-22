@@ -53,6 +53,7 @@ namespace Enemy
                 _rigidbody2D.velocity = default;
                 _anim.SetTrigger("Dead");
                 _alive = false;
+                Map.EnemiesAlive--;
                 Destroy(gameObject, 0.5f);
             }
         }

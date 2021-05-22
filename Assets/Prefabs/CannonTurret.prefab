@@ -181,9 +181,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Health: 50
-  Range: 20
-  Damage: 200
-  FireRate: 10
+  Range: 0.3
+  Damage: 3
+  FireRate: 1
   Target: {fileID: 0}
   Cannon: {fileID: 1293435218807088033}
   Enemy:

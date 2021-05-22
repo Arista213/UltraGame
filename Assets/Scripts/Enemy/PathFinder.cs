@@ -87,16 +87,21 @@ namespace Enemy
 
         public Vector3 GetNearestTarget(Vector3 initialPosition)
         {
-            var nearest = _playerTransform.position;
-
-            foreach (var target in Map.PlayerSideTransforms)
+            if (_playerTransform != null)
             {
-                if ((target - initialPosition).magnitude <
-                    (nearest - initialPosition).magnitude)
-                    nearest = target;
+                var nearest = _playerTransform.position;
+
+                foreach (var target in Map.PlayerSideTransforms)
+                {
+                    if ((target - initialPosition).magnitude <
+                        (nearest - initialPosition).magnitude)
+                        nearest = target;
+                }
+
+                return nearest;
             }
 
-            return nearest;
+            return default;
         }
 
         private List<Vector3> GetMoveList(SinglyLinkedList<Vector3> path, Vector3 target)

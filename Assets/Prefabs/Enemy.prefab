@@ -115,9 +115,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d57c6113b7bfdbf46bcb2637e2a2b927, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 50
-  _damage: 0.4
-  _maxSpeed: 1
+  Health: 20
+  _damage: 5
+  _maxSpeed: 0.4
   _attackRange: 0.12
   _attackDelay: 1
   _playerSideMask:
