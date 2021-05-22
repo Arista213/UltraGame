@@ -60,17 +60,11 @@ namespace Player
 
         void TryToDamage()
         {
-            // _currentDestroyRange =
-            //     _hand.HandDirection == Direction.Up ? _destroyRangeVertical : _destroyRangeHorizontal;
-            //
-            // Collider2D enemy = Physics2D.OverlapBox(_hand.transform.position, _currentDestroyRange, 0f, _enemy);
-            // enemy.GetComponent<Damageable>().TakeDamage(_damage);
-
             Collider2D[] enemies =
                 Physics2D.OverlapBoxAll(_hand.transform.position, _currentDestroyRange, 0f, _enemy);
             
             foreach (var e in enemies)
-                e.GetComponent<Assets.Scripts.Enemy>().TakeDamage(_damage);
+                e.GetComponent<Enemy.Enemy>().TakeDamage(_damage);
         }
 
         void TryToDestroy()

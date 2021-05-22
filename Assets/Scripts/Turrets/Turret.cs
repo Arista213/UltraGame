@@ -21,6 +21,8 @@ namespace Turrets
         [SerializeField] protected LayerMask Enemy;
 
         [SerializeField] protected GameObject Bullet;
+        [SerializeField] protected AudioSource AudioSource;
+        [SerializeField] protected AudioClip ShootSound;
 
 
         void Start()
@@ -56,6 +58,7 @@ namespace Turrets
 
         protected void Shoot()
         {
+            AudioSource.PlayOneShot(ShootSound);
             GameObject bulletGo = Instantiate(Bullet, Cannon.position, Cannon.rotation);
             Bullet bullet = bulletGo.GetComponent<Bullet>();
             if (bullet != null)
