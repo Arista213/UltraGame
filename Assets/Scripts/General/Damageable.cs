@@ -1,31 +1,41 @@
-        using System;
+using System;
 using System.Data;
 using System.Linq;
-using Enemy;
 using Turrets;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace General
 {
     public class Damageable : MonoBehaviour
     {
         [Header("Attributes")] [SerializeField]
-        public float Health;
+        public float MaxHealth;
 
-        public virtual void TakeDamage(float damage)
+        public float Health;
+        [Header("Unity stuff")] public Image healthBar;
+
+        [SerializeField] protected GameObject DamageableGameobject;
+
+        public void Awake()
+        {
+            Health = MaxHealth;
+        }
+
+        virtual public void TakeDamage(float damage)
         {
             Health -= damage;
+            healthBar.fillAmount = Health / MaxHealth;
             if (Health <= 0)
             {
                 Turret turret;
-                Player.Player player;
                 if (gameObject.TryGetComponent(out turret))
+                {
+                    print(Map.PlayerSideTransforms.Count);
                     Map.Remove(gameObject.transform.position);
-                else if (gameObject.TryGetComponent(out player))
-                    Enemy.Enemy.PlayerStatus = false;
+                }
 
-
-                Destroy(gameObject);
+                Destroy(DamageableGameobject);
             }
         }
     }

@@ -18,7 +18,9 @@ namespace Enemy
         [SerializeField] private Animator _anim;
         [SerializeField] private AudioSource _audioSource;
         [SerializeField] private AudioClip _damageSound;
+        [SerializeField] private Transform _enemyTransform;
         [NonSerialized] public static bool PlayerStatus = true;
+        
         private Rigidbody2D _rigidbody2D;
         private List<Vector3> _moveList = new List<Vector3>();
         private bool _isFacingRight = true;
@@ -48,6 +50,7 @@ namespace Enemy
         public override void TakeDamage(float damage)
         {
             Health -= damage;
+            healthBar.fillAmount = Health / MaxHealth;
             if (Health <= 0)
             {
                 _rigidbody2D.velocity = default;
@@ -125,9 +128,9 @@ namespace Enemy
         private void Flip()
         {
             _isFacingRight = !_isFacingRight;
-            Vector3 theScale = transform.localScale;
+            Vector3 theScale = _enemyTransform.localScale;
             theScale.x *= -1;
-            transform.localScale = theScale;
+            _enemyTransform.localScale = theScale;
         }
 
         private void OnDrawGizmosSelected()
