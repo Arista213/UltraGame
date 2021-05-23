@@ -11,12 +11,15 @@ namespace General
         public static List<Vector3> PlayerSideTransforms { get; private set; }
         public static PathFinder PathFinder { get; set; }
         public static int EnemiesAlive { get; set; }
+        public static LayerMask PlayerSideLayer;
         [SerializeField] private LayerMask _solidLayer;
+        [SerializeField] private LayerMask _playerSideLayer;
 
         private void Awake()
         {
             PlayerSideTransforms = new List<Vector3>();
             PathFinder = new PathFinder(_solidLayer, GameObject.FindWithTag("Player").transform);
+            PlayerSideLayer = _playerSideLayer;
         }
 
         public static void Add(Vector3 position)

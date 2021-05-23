@@ -9,7 +9,7 @@ namespace Enemy
 {
     public class PathFinder
     {
-        private const float CellSize = 0.15f;
+        private const float CellSize = 0.16f;
         private LayerMask _solidLayer;
 
         private Transform _playerTransform;
@@ -22,8 +22,14 @@ namespace Enemy
 
         public static Vector3 RoundVector(Vector3 vector)
         {
-            return new Vector3((float) Math.Round(vector.x / CellSize) * CellSize + CellSize / 2,
-                (float) Math.Round(vector.y / CellSize) * CellSize + CellSize / 2);
+            var x = vector.x < 0
+                ? vector.x + (CellSize / 2 - vector.x % CellSize) - CellSize
+                : vector.x + (CellSize / 2 - vector.x % CellSize);
+            var y = vector.y < 0
+                ? vector.y + (CellSize / 2 - vector.y % CellSize) - CellSize
+                : vector.y + (CellSize / 2 - vector.y % CellSize);
+            Enemy.DrawLine(vector, new Vector3(x, y), Color.magenta);
+            return new Vector3(x, y);
         }
 
         private readonly List<Vector3> _possibleMoves = new List<Vector3>
@@ -37,9 +43,12 @@ namespace Enemy
         public List<Vector3> FindShortestPath(Vector3 initialPosition)
         {
             var target = GetNearestTarget(initialPosition);
+            if ((target - initialPosition).magnitude <= CellSize)
+                return new List<Vector3> {target};
+            
             var start = RoundVector(initialPosition);
-            start = Physics2D.OverlapBox(start, new Vector2(0.15f, 0.15f), _solidLayer) ? RoundVector(initialPosition) : start;
             var end = RoundVector(target);
+            var a = new Vector3(CellSize / 2, CellSize / 2);
             var visitedPoints = new HashSet<Vector3> {start};
             var queue = new Queue<SinglyLinkedList<Vector3>>();
             queue.Enqueue(new SinglyLinkedList<Vector3>(start, null));
@@ -47,55 +56,42 @@ namespace Enemy
             while (queue.Count > 0)
             {
                 var currentPoint = queue.Dequeue();
-                if ((currentPoint.Value - end).magnitude <= 0.1f) return new List<Vector3> {end};
 
-                var p = _possibleMoves.Select(nextMove => currentPoint.Value + nextMove)
-                    .Where(nextPoint => (nextPoint - end).magnitude <= CellSize ||
-                                        !Physics2D.OverlapBox(nextPoint, new Vector2(0.15f, 0.15f), _solidLayer)
-                                        && !visitedPoints.Contains(nextPoint)).ToList();
+                var p = _possibleMoves.Select(nextMove => currentPoint.Value + nextMove);
+                var d = p.Where(nextPoint => !Physics2D.OverlapCircle(nextPoint, 0.03f, _solidLayer));
+                var v = d.Where(nextPoint => !visitedPoints.Contains(nextPoint)).ToList();
 
-                foreach (var nextPoint in p)
+                foreach (var nextPoint in v)
                 {
                     if (queue.Count > 2000)
-                        return default;
+                        return GetMoveList(queue.Last(), target);
 
                     var tempSinglyLinkedList = new SinglyLinkedList<Vector3>(nextPoint, currentPoint);
                     queue.Enqueue(tempSinglyLinkedList);
 
-                    if ((end - nextPoint).magnitude <= CellSize / 2)
+
+                    if (Physics2D.OverlapCircle(nextPoint, CellSize / 2, Map.PlayerSideLayer))
+                    {
                         return GetMoveList(queue.Last(), target);
+                    }
 
                     visitedPoints.Add(nextPoint);
                 }
             }
 
-            return default;
+            return new List<Vector3> {start};
         }
 
         public Vector3 GetNearestTarget(Vector3 initialPosition)
         {
-            if (_playerTransform != null)
-            {
-                var nearest = _playerTransform.position;
-
-                foreach (var target in Map.PlayerSideTransforms)
-                {
-                    if ((target - initialPosition).magnitude <
-                        (nearest - initialPosition).magnitude)
-                        nearest = target;
-                }
-
-                return nearest;
-            }
-
-            return default;
+            return Map.PlayerSideTransforms.Concat(new[] {_playerTransform.position})
+                .OrderBy(x => (initialPosition - x).magnitude).FirstOrDefault();
         }
 
         public static List<Vector3> GetMoveList(SinglyLinkedList<Vector3> path, Vector3 target)
         {
             if (path == null) return null;
             var result = new List<Vector3>();
-            result.Add(path.Value);
             if (path.Previous != null)
             {
                 var previous = path.Previous;
@@ -109,7 +105,7 @@ namespace Enemy
                 result.Add(target);
             }
 
-            return result;
+            return result.Skip(1).ToList();
         }
     }
 }
