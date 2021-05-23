@@ -26,8 +26,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5737999175778814302}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.13, y: 2.12, z: 0}
-  m_LocalScale: {x: 0.16260836, y: 0.16260836, z: 0}
+  m_LocalPosition: {x: 6.116, y: 2.106, z: 0}
+  m_LocalScale: {x: 0.13454215, y: 0.13454215, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -71,7 +71,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
   m_Color: {r: 1, g: 0.06997466, b: 0, a: 1}
   m_FlipX: 0
@@ -97,6 +97,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waves:
   - enemy: {fileID: 1392457712922902302, guid: 700dcb0af74d6ce4c9c36af5d341a85a, type: 3}
-    count: 1
+    count: 5
+    rate: 2
+  - enemy: {fileID: 1392457712922902302, guid: 700dcb0af74d6ce4c9c36af5d341a85a, type: 3}
+    count: 5
     rate: 1
+  - enemy: {fileID: 1392457712922902302, guid: 700dcb0af74d6ce4c9c36af5d341a85a, type: 3}
+    count: 5
+    rate: 0.5
   timeBetweenWaves: 20

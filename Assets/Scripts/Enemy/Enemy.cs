@@ -53,9 +53,11 @@ namespace Enemy
             healthBar.fillAmount = Health / MaxHealth;
             if (Health <= 0)
             {
+                Resource.GainMoneyForKill();
                 _rigidbody2D.velocity = default;
                 _anim.SetTrigger("Dead");
                 _alive = false;
+                Map.EnemiesAlive--;
                 Destroy(gameObject, 0.5f);
             }
         }
@@ -63,7 +65,7 @@ namespace Enemy
         private void UpdateMoveList()
         {
             _moveList = Map.PathFinder.FindShortestPath(transform.position);
-            DrawPath(_moveList, transform.position);
+            //DrawPath(_moveList, transform.position);
         }
 
         private void CheckDamageStatus()

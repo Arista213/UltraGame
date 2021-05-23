@@ -10,6 +10,7 @@ namespace General
     {
         public static List<Vector3> PlayerSideTransforms { get; private set; }
         public static PathFinder PathFinder { get; set; }
+        public static int EnemiesAlive { get; set; }
         [SerializeField] private LayerMask _solidLayer;
 
         private void Awake()
