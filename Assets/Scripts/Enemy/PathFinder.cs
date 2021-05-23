@@ -38,6 +38,7 @@ namespace Enemy
         {
             var target = GetNearestTarget(initialPosition);
             var start = RoundVector(initialPosition);
+            start = Physics2D.OverlapBox(start, new Vector2(0.15f, 0.15f), _solidLayer) ? RoundVector(initialPosition) : start;
             var end = RoundVector(target);
             var visitedPoints = new HashSet<Vector3> {start};
             var queue = new Queue<SinglyLinkedList<Vector3>>();
@@ -50,7 +51,7 @@ namespace Enemy
 
                 var p = _possibleMoves.Select(nextMove => currentPoint.Value + nextMove)
                     .Where(nextPoint => (nextPoint - end).magnitude <= CellSize ||
-                                        !Physics2D.OverlapCircle(nextPoint, 0.01f, _solidLayer)
+                                        !Physics2D.OverlapBox(nextPoint, new Vector2(0.15f, 0.15f), _solidLayer)
                                         && !visitedPoints.Contains(nextPoint)).ToList();
 
                 foreach (var nextPoint in p)
