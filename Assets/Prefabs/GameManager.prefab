@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 828813539888142305}
   - component: {fileID: 1267703633}
   m_Layer: 0
-  m_Name: Initiliazor
+  m_Name: GameManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -47,6 +47,9 @@ MonoBehaviour:
   _solidLayer:
     serializedVersion: 2
     m_Bits: 336
+  _playerSideLayer:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!82 &1267703633
 AudioSource:
   m_ObjectHideFlags: 0

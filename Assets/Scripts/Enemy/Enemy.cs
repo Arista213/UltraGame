@@ -20,7 +20,7 @@ namespace Enemy
         [SerializeField] private AudioClip _damageSound;
         [SerializeField] private Transform _enemyTransform;
         [NonSerialized] public static bool PlayerStatus = true;
-        
+
         private Rigidbody2D _rigidbody2D;
         private List<Vector3> _moveList = new List<Vector3>();
         private bool _isFacingRight = true;
@@ -64,7 +64,9 @@ namespace Enemy
 
         private void UpdateMoveList()
         {
-            _moveList = Map.PathFinder.FindShortestPath(transform.position);
+            var moveList = Map.PathFinder.FindShortestPath(transform.position);
+            if (moveList != null)
+                _moveList = moveList;
             DrawPath(_moveList, transform.position);
         }
 
@@ -112,14 +114,15 @@ namespace Enemy
             }
 
             var target = Map.PathFinder.GetNearestTarget(transform.position);
-            if ((transform.position - target).magnitude <= 0.08f)
+            if ((transform.position - target).magnitude <= 0.04f)
                 _rigidbody2D.velocity = default;
             else
             {
                 var nextMove = _moveList.FirstOrDefault();
                 if (nextMove != default)
                 {
-                    if ((nextMove - transform.position).magnitude <= 0.16f) _moveList.RemoveAt(0);
+                    if ((nextMove - transform.position).magnitude <= 0.02f)
+                        _moveList.RemoveAt(0);
                     Move(nextMove);
                 }
                 else
@@ -135,8 +138,9 @@ namespace Enemy
             _enemyTransform.localScale = theScale;
         }
 
-        private void OnDrawGizmosSelected()
+        private void OnDrawGizmos()
         {
+            Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(transform.position, _attackRange);
         }
 
@@ -155,7 +159,7 @@ namespace Enemy
         }
 
 
-        private void DrawLine(Vector3 start, Vector3 end, Color color, float duration = 1f)
+        public static void DrawLine(Vector3 start, Vector3 end, Color color, float duration = 1f)
         {
             GameObject myLine = new GameObject();
             myLine.transform.position = start;
