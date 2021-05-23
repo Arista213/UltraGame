@@ -50,6 +50,7 @@ namespace Enemy
             Health -= damage;
             if (Health <= 0)
             {
+                Resource.GainMoneyForKill();
                 _rigidbody2D.velocity = default;
                 _anim.SetTrigger("Dead");
                 _alive = false;

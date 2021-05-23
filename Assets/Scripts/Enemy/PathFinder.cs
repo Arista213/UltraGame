@@ -7,20 +7,6 @@ using UnityEngine;
 
 namespace Enemy
 {
-    public class SinglyLinkedList<T>
-    {
-        public SinglyLinkedList(T value, SinglyLinkedList<T> previous)
-        {
-            Value = value;
-            Previous = previous;
-            Length += 1 + previous?.Length ?? 1;
-        }
-
-        public SinglyLinkedList<T> Previous { get; }
-        public T Value { get; set; }
-        public int Length { get; set; }
-    }
-
     public class PathFinder
     {
         private const float CellSize = 0.15f;
@@ -104,7 +90,7 @@ namespace Enemy
             return default;
         }
 
-        private List<Vector3> GetMoveList(SinglyLinkedList<Vector3> path, Vector3 target)
+        public static List<Vector3> GetMoveList(SinglyLinkedList<Vector3> path, Vector3 target)
         {
             if (path == null) return null;
             var result = new List<Vector3>();

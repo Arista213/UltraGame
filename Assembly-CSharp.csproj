@@ -52,6 +52,7 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\Enemy\SinglyLinkedList.cs" />
      <Compile Include="Assets\Scripts\General\Map.cs" />
      <Compile Include="Assets\Scripts\Enemy\WaveSpawner.cs" />
      <Compile Include="Assets\Scripts\General\Damageable.cs" />
@@ -69,6 +70,7 @@
      <Compile Include="Assets\Scripts\Enemy\Enemy.cs" />
      <Compile Include="Assets\Scripts\General\Destroyable.cs" />
      <Compile Include="Assets\Scripts\Turrets\Bullet.cs" />
+     <Compile Include="Assets\Scripts\General\Resource.cs" />
      <None Include="Assets\craftpix-891178-free-golem-tiny-style-2d-character-sprites\TXT\license.txt" />
      <None Include="Assets\ShootingSound\ReadMe.txt" />
      <None Include="Assets\craftpix-891178-free-golem-tiny-style-2d-character-sprites\TXT\readme.txt" />
