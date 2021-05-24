@@ -16,16 +16,18 @@ namespace General
             UpdateMoneyStatus();
         }
 
-        public static void BuildTower(int price)
+        public static void GainMoneyForKill()
         {
-            money -= price;
+            money += 10;
             UpdateMoneyStatus();
         }
 
-        public static void GainMoneyForKill()
+        public static bool BuildTurret(int price)
         {
-            money += 5;
+            if (price > money) return false;
+            money -= price;
             UpdateMoneyStatus();
+            return true;
         }
 
         private static void UpdateMoneyStatus()

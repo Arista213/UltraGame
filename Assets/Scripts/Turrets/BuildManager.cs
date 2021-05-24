@@ -30,10 +30,16 @@ namespace Turrets
 
         public static GameObject BuildTurret(Vector3 position, Quaternion rotation)
         {
-            GameObject turretToBuild = BuildManager.GetTurretToBuild();
-            Resource.BuildTurret(10);
-            instance.ClearTurret();
-            return Instantiate(turretToBuild, position, rotation);
+            GameObject turretToBuild = GetTurretToBuild();
+            var price = turretToBuild.GetComponent<Turret>().BuildPrice;
+            if (Resource.BuildTurret(price))
+            {
+                ClearTurret();
+                return Instantiate(turretToBuild, position, rotation);
+            }
+
+            ClearTurret();
+            return null;
         }
 
         public static void SetTurretToBuild(GameObject _turretToBuild)
@@ -41,9 +47,9 @@ namespace Turrets
             instance.turretToBuild = _turretToBuild;
         }
 
-        public void ClearTurret()
+        public static void ClearTurret()
         {
-            turretToBuild = null;
+            instance.turretToBuild = null;
         }
     }
 }

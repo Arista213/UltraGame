@@ -97,12 +97,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waves:
   - enemy: {fileID: 1392457712922902302, guid: 700dcb0af74d6ce4c9c36af5d341a85a, type: 3}
-    count: 5
+    count: 2
     rate: 2
   - enemy: {fileID: 1392457712922902302, guid: 700dcb0af74d6ce4c9c36af5d341a85a, type: 3}
     count: 5
     rate: 1
   - enemy: {fileID: 1392457712922902302, guid: 700dcb0af74d6ce4c9c36af5d341a85a, type: 3}
-    count: 5
+    count: 10
     rate: 0.5
   timeBetweenWaves: 20

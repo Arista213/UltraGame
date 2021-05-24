@@ -31,6 +31,7 @@ namespace Enemy
         {
             _rigidbody2D = GetComponent<Rigidbody2D>();
             InvokeRepeating(nameof(UpdateMoveList), 0f, 0.8f);
+            
         }
 
         private void FixedUpdate()

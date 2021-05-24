@@ -11,7 +11,7 @@ namespace Turrets
 
         public float Damage = 5f;
         public float FireRate = 1f;
-        public float BuildPrice = 10f;
+        public int BuildPrice = 100;
         protected float FireCooldown = 0f;
 
         [Header("Unity Setup Fields")] [SerializeField]
