@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Enemy;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace General
 {
@@ -12,6 +13,7 @@ namespace General
         public static PathFinder PathFinder { get; set; }
         public static int EnemiesAlive { get; set; }
         [SerializeField] private LayerMask _solidLayer;
+        [SerializeField] private Text _money;
 
         private void Awake()
         {
