@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 828813539888142334}
   - component: {fileID: 44197081677306808}
   - component: {fileID: 1267703633}
+  - component: {fileID: 1285423599}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -51,7 +52,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 336
   _moneyText: {fileID: 0}
-  _initialMoney: 20
+  _initialMoney: 500
 --- !u!82 &1267703633
 AudioSource:
   m_ObjectHideFlags: 0
@@ -148,3 +149,15 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1285423599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 828813539888142304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca9bb97b2ece4983b85e62f8798f6f1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

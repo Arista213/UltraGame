@@ -13,11 +13,13 @@ namespace General
         public static PathFinder PathFinder { get; set; }
         public static int EnemiesAlive { get; set; }
         public static LayerMask PlayerSideLayer;
+        public static LayerMask SolidLayer;
 
         public Map(LayerMask _solidLayer, LayerMask playerSideLayer)
         {
             PlayerSideTransforms = new List<Vector3>();
             PlayerSideLayer = playerSideLayer;
+            SolidLayer = _solidLayer;
             PathFinder = new PathFinder(_solidLayer, GameObject.FindWithTag("Player").transform);
         }
 

@@ -22,19 +22,12 @@ namespace General
             Health = MaxHealth;
         }
 
-        virtual public void TakeDamage(float damage)
+        public virtual void TakeDamage(float damage)
         {
             Health -= damage;
             healthBar.fillAmount = Health / MaxHealth;
             if (Health <= 0)
             {
-                Turret turret;
-                if (gameObject.TryGetComponent(out turret))
-                {
-                    print(Map.PlayerSideTransforms.Count);
-                    Map.Remove(gameObject.transform.position);
-                }
-
                 Destroy(DamageableGameobject);
             }
         }

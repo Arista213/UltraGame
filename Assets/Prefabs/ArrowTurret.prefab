@@ -250,8 +250,9 @@ MonoBehaviour:
   healthBar: {fileID: 8980493998747370159}
   DamageableGameobject: {fileID: 1539060538197481796}
   Range: 0.6
-  Damage: 10
+  Damage: 20
   FireRate: 1
+  BuildPrice: 100
   Target: {fileID: 0}
   Cannon: {fileID: 4669186526942985722}
   Enemy:

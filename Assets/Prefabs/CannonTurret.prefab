@@ -281,13 +281,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ccec634327ee724ea98b28a2eba5b06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealth: 100
-  Health: 50
+  MaxHealth: 200
+  Health: 0
   healthBar: {fileID: 3550129162239955984}
   DamageableGameobject: {fileID: 1293435220538254660}
   Range: 1
-  Damage: 20
+  Damage: 30
   FireRate: 1
+  BuildPrice: 100
   Target: {fileID: 0}
   Cannon: {fileID: 1293435218807088033}
   Enemy:
