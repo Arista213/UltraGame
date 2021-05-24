@@ -9,24 +9,26 @@ namespace Turrets
         [Header("Attributes")] [SerializeField]
         protected float Range = 2f;
 
-        [SerializeField] protected float Damage = 5f;
-        [SerializeField] protected float FireRate = 1f;
+        public float Damage = 5f;
+        public float FireRate = 1f;
+        public int BuildPrice = 100;
         protected float FireCooldown = 0f;
 
         [Header("Unity Setup Fields")] [SerializeField]
         protected Transform Target;
 
-        [SerializeField] protected Transform Cannon;
+        public Transform Cannon;
 
-        [SerializeField] protected LayerMask Enemy;
+        public LayerMask Enemy;
 
-        [SerializeField] protected GameObject Bullet;
+        public GameObject Bullet;
+        public AudioSource AudioSource;
+        public AudioClip ShootSound;
 
 
         void Start()
         {
             Map.Add(transform.position);
-            print(Map.PlayerSideTransforms.Count);
             InvokeRepeating("UpdateTarget", 0f, 0.5f);
         }
 
@@ -35,7 +37,6 @@ namespace Turrets
             Collider2D enemy = Physics2D.OverlapCircle(transform.position, Range, Enemy);
             Target = enemy != null ? enemy.transform : null;
         }
-
 
         void FixedUpdate()
         {
@@ -54,8 +55,20 @@ namespace Turrets
                 FireCooldown -= Time.deltaTime;
         }
 
+        public override void TakeDamage(float damage)
+        {
+            Health -= damage;
+            healthBar.fillAmount = Health / MaxHealth;
+            if (Health <= 0)
+            {
+                Map.Remove(transform.position);
+                Destroy(DamageableGameobject);
+            }
+        }
+
         protected void Shoot()
         {
+            AudioSource.PlayOneShot(ShootSound);
             GameObject bulletGo = Instantiate(Bullet, Cannon.position, Cannon.rotation);
             Bullet bullet = bulletGo.GetComponent<Bullet>();
             if (bullet != null)

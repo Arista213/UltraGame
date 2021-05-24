@@ -23,6 +23,8 @@ namespace Player
         [SerializeField] private Animator _anim;
         [SerializeField] private LayerMask _destroyableEnviroment;
         [SerializeField] private LayerMask _enemy;
+        [SerializeField] private AudioSource _audioSource;
+        [SerializeField] private AudioClip _damageSound;
 
 
         void FixedUpdate()
@@ -50,6 +52,7 @@ namespace Player
                         }
                     }
 
+                    _audioSource.PlayOneShot(_damageSound);
                     TryToDamage();
                     TryToDestroy();
                     _attackCooldown = _destroyDelay;
@@ -60,17 +63,11 @@ namespace Player
 
         void TryToDamage()
         {
-            // _currentDestroyRange =
-            //     _hand.HandDirection == Direction.Up ? _destroyRangeVertical : _destroyRangeHorizontal;
-            //
-            // Collider2D enemy = Physics2D.OverlapBox(_hand.transform.position, _currentDestroyRange, 0f, _enemy);
-            // enemy.GetComponent<Damageable>().TakeDamage(_damage);
-
             Collider2D[] enemies =
                 Physics2D.OverlapBoxAll(_hand.transform.position, _currentDestroyRange, 0f, _enemy);
-            
+
             foreach (var e in enemies)
-                e.GetComponent<Assets.Scripts.Enemy>().TakeDamage(_damage);
+                e.GetComponent<Enemy.Enemy>().TakeDamage(_damage);
         }
 
         void TryToDestroy()

@@ -6,13 +6,10 @@ namespace Player
     public class PlayerMovements : MonoBehaviour
     {
         [SerializeField] private float _maxSpeed;
+        [SerializeField] private Transform _playerTransform;
         private bool _isFacingRight = true;
-        private Animator _anim;
-
-        private void Start()
-        {
-            _anim = GetComponent<Animator>();
-        }
+        [SerializeField] Animator _anim;
+        [SerializeField] private Rigidbody2D _parantRigidbody2D;
 
         private void FixedUpdate()
         {
@@ -21,7 +18,7 @@ namespace Player
             var speed = Math.Max(Mathf.Abs(moveX), Mathf.Abs(moveY));
             _anim.SetFloat("Speed", speed);
             
-            GetComponent<Rigidbody2D>().velocity =
+            _parantRigidbody2D.velocity =
                 new Vector2(moveX * _maxSpeed, moveY * _maxSpeed);
 
             if (moveX > 0 && !_isFacingRight)
@@ -33,9 +30,9 @@ namespace Player
         private void Flip()
         {
             _isFacingRight = !_isFacingRight;
-            Vector3 theScale = transform.localScale;
+            Vector3 theScale = _playerTransform.localScale;
             theScale.x *= -1;
-            transform.localScale = theScale;
+            _playerTransform.localScale = theScale;
         }
     }
 }
