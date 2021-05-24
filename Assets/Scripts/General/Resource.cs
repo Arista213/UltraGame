@@ -11,12 +11,17 @@ namespace General
 
         private void Start()
         {
-            Money = 30;
+            Money = 20;
         }
 
         public static void GainMoneyForKill()
         {
             Money += 5;
+        }
+
+        public static void BuildTurret(int price)
+        {
+            Money -= price;
         }
 
         private void UpdateMoneyStatus()

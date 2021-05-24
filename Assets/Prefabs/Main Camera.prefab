@@ -236,7 +236,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 0.5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -437,8 +437,9 @@ GameObject:
   - component: {fileID: 8037366309334380162}
   - component: {fileID: 3300330876174628596}
   - component: {fileID: 1667078967550094949}
+  - component: {fileID: 1199187395}
   m_Layer: 5
-  m_Name: Slot1 (1)
+  m_Name: CannonTurretButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -546,6 +547,19 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1199187395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4923140214031238276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ecbd4339f5270540b4a38b915d0ea93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TurretPrefab: {fileID: 1293435220538254660, guid: f23ca759b9c0c1e44924369bcc462e8a, type: 3}
 --- !u!1 &5610175124603966484
 GameObject:
   m_ObjectHideFlags: 0
@@ -679,8 +693,9 @@ GameObject:
   - component: {fileID: 4857376571534260267}
   - component: {fileID: 6419513448242576754}
   - component: {fileID: 2037934699637676685}
+  - component: {fileID: 1505381967}
   m_Layer: 5
-  m_Name: Slot1
+  m_Name: ArrowTurretButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -788,15 +803,28 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11500000, guid: a8219365a89b7c7409017a0e0f26fd63, type: 3}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 1505381967}
+        m_TargetAssemblyTypeName: Buttons.TurretButtonManager, Assembly-CSharp
+        m_MethodName: SetTurret
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: SetTurret
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1505381967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6042887900228575702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8219365a89b7c7409017a0e0f26fd63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TurretPrefab: {fileID: 1539060538197481796, guid: f445e3fa75c096d42919ecd3444d4a02, type: 3}

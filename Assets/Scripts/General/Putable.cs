@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using General;
 using Turrets;
+using UnityEditor;
 using UnityEngine;
 
 public class Putable : MonoBehaviour
@@ -18,14 +20,14 @@ public class Putable : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (turret!=null)
+        if (BuildManager.GetTurretToBuild() == null) return;
+        if (turret != null)
         {
             Debug.Log("нет");
             return;
         }
 
-        GameObject turretToBuild = TurretPlacing.instance.GetTurrentToBuild();
-        turret = (GameObject) Instantiate(turretToBuild, transform.position + positionOffset, transform.rotation);
+        turret = BuildManager.BuildTurret(transform.position, transform.rotation);
     }
 
     void Start()
@@ -36,19 +38,17 @@ public class Putable : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        if (false)  
-            rend.material.color = cannotColor; 
-        else rend.material.color = holorColor;
+        if (BuildManager.GetTurretToBuild() == null) return;
+        if (Physics2D.OverlapCircle(transform.position, 0.04f, Map.SolidLayer))
+            rend.material.color = cannotColor;
+        else
+            rend.material.color = holorColor;
+        rend.sortingOrder = 1;
     }
 
     private void OnMouseExit()
     {
         rend.material.color = startColor;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        rend.sortingOrder = -1;
     }
 }
