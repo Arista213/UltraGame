@@ -4,14 +4,14 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class MainManu : MonoBehaviour
 {
-    public void OpenTestLevel()
+    public void OpenSecondLevel()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene("SecondLevel");
     }
     
     public void OpenFirstLevel()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
+        SceneManager.LoadScene("FirstLevel");
     }
 
     public void QuitGame()
@@ -21,6 +21,6 @@ public class MainManu : MonoBehaviour
     }
     public void OpenMenu()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 3);
+        SceneManager.LoadScene("Menu");
     }
 }

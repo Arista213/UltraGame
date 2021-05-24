@@ -66,8 +66,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 1.673}
-  m_SizeDelta: {x: 6.054, y: 0.235}
+  m_AnchoredPosition: {x: 0.001, y: 1.5586}
+  m_SizeDelta: {x: 2.5884, y: 0.1626}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &6157612995079726743
 Canvas:
@@ -87,8 +87,8 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 149072145
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!114 &6917187366678559004
 MonoBehaviour:
@@ -249,9 +249,9 @@ MonoBehaviour:
   Health: 0
   healthBar: {fileID: 8980493998747370159}
   DamageableGameobject: {fileID: 1539060538197481796}
-  Range: 0.6
+  Range: 1.2
   Damage: 20
-  FireRate: 1
+  FireRate: 0.7
   BuildPrice: 100
   Target: {fileID: 0}
   Cannon: {fileID: 4669186526942985722}

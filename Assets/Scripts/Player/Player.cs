@@ -25,6 +25,8 @@ namespace Player
         {
             if (Input.GetKey(KeyCode.Mouse1))
                 BuildManager.ClearTurret();
+            if (Input.GetKey(KeyCode.Escape))
+                SceneManager.LoadScene("Menu");
         }
     }
 }

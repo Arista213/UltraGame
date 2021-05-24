@@ -18,11 +18,6 @@ namespace Turrets
             instance = this;
         }
 
-        public bool CanBuild
-        {
-            get { return turretToBuild != null; }
-        }
-
         public static GameObject GetTurretToBuild()
         {
             return instance.turretToBuild;
@@ -34,11 +29,9 @@ namespace Turrets
             var price = turretToBuild.GetComponent<Turret>().BuildPrice;
             if (Resource.BuildTurret(price))
             {
-                ClearTurret();
                 return Instantiate(turretToBuild, position, rotation);
             }
-
-            ClearTurret();
+            
             return null;
         }
 

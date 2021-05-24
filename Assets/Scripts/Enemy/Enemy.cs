@@ -31,7 +31,6 @@ namespace Enemy
         {
             _rigidbody2D = GetComponent<Rigidbody2D>();
             InvokeRepeating(nameof(UpdateMoveList), 0f, 0.8f);
-            
         }
 
         private void FixedUpdate()
@@ -54,12 +53,16 @@ namespace Enemy
             healthBar.fillAmount = Health / MaxHealth;
             if (Health <= 0)
             {
-                Resource.GainMoneyForKill();
                 _rigidbody2D.velocity = default;
                 _anim.SetTrigger("Dead");
+                if (_alive)
+                {
+                    Map.EnemiesAlive--;
+                    Resource.GainMoneyForKill();
+                    Destroy(gameObject, 0.5f);
+                }
+
                 _alive = false;
-                Map.EnemiesAlive--;
-                Destroy(gameObject, 0.5f);
             }
         }
 

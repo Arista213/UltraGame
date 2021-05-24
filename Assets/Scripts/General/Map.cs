@@ -17,6 +17,7 @@ namespace General
 
         public Map(LayerMask _solidLayer, LayerMask playerSideLayer)
         {
+            EnemiesAlive = 0;
             PlayerSideTransforms = new List<Vector3>();
             PlayerSideLayer = playerSideLayer;
             SolidLayer = _solidLayer;

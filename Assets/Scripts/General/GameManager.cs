@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace General
@@ -19,8 +20,8 @@ namespace General
 
         private void FixedUpdate()
         {
-            if (Map.EnemiesAlive == 0) 
-                print("VICTORY!");
+            if (Map.EnemiesAlive == 0)
+                SceneManager.LoadScene("Win");
         }
     }
 }

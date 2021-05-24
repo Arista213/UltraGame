@@ -28,6 +28,7 @@ public class WaveSpawner : MonoBehaviour
     {
         foreach (var wave in waves)
             Map.EnemiesAlive += wave.count;
+        print(Map.EnemiesAlive);
     }
 
     private void FixedUpdate()

@@ -285,8 +285,8 @@ MonoBehaviour:
   Health: 0
   healthBar: {fileID: 3550129162239955984}
   DamageableGameobject: {fileID: 1293435220538254660}
-  Range: 1
-  Damage: 30
+  Range: 0.6
+  Damage: 20
   FireRate: 1
   BuildPrice: 100
   Target: {fileID: 0}
