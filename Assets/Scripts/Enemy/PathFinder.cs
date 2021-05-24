@@ -62,7 +62,7 @@ namespace Enemy
 
                 foreach (var nextPoint in v)
                 {
-                    if (queue.Count > 2000)
+                    if (queue.Count > 3000)
                         return GetMoveList(queue.Last(), target);
 
                     var tempSinglyLinkedList = new SinglyLinkedList<Vector3>(nextPoint, currentPoint);
