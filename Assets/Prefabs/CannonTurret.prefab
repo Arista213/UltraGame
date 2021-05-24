@@ -284,8 +284,8 @@ MonoBehaviour:
   MaxHealth: 100
   Health: 50
   healthBar: {fileID: 3550129162239955984}
-  DamageableGameobject: {fileID: 0}
-  Range: 20
+  DamageableGameobject: {fileID: 1293435220538254660}
+  Range: 1
   Damage: 20
   FireRate: 1
   Target: {fileID: 0}

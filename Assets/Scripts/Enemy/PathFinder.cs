@@ -28,7 +28,6 @@ namespace Enemy
             var y = vector.y < 0
                 ? vector.y + (CellSize / 2 - vector.y % CellSize) - CellSize
                 : vector.y + (CellSize / 2 - vector.y % CellSize);
-            Enemy.DrawLine(vector, new Vector3(x, y), Color.magenta);
             return new Vector3(x, y);
         }
 
@@ -63,7 +62,7 @@ namespace Enemy
 
                 foreach (var nextPoint in v)
                 {
-                    if (queue.Count > 2000)
+                    if (queue.Count > 3000)
                         return GetMoveList(queue.Last(), target);
 
                     var tempSinglyLinkedList = new SinglyLinkedList<Vector3>(nextPoint, currentPoint);

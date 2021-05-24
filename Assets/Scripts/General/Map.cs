@@ -7,22 +7,17 @@ using UnityEngine.UI;
 
 namespace General
 {
-    public class Map : MonoBehaviour
+    public class Map
     {
         public static List<Vector3> PlayerSideTransforms { get; private set; }
         public static PathFinder PathFinder { get; set; }
         public static int EnemiesAlive { get; set; }
         public static LayerMask PlayerSideLayer;
-        public static LayerMask SolidLayer;
-        [SerializeField] private LayerMask _playerSideLayer;
-        [SerializeField] private LayerMask _solidLayer;
-        [SerializeField] private Text _money;
 
-        private void Awake()
+        public Map(LayerMask _solidLayer, LayerMask playerSideLayer)
         {
-            PlayerSideLayer = _playerSideLayer;
-            SolidLayer = _solidLayer;
             PlayerSideTransforms = new List<Vector3>();
+            PlayerSideLayer = playerSideLayer;
             PathFinder = new PathFinder(_solidLayer, GameObject.FindWithTag("Player").transform);
         }
 

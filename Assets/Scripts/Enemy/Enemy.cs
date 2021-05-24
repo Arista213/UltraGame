@@ -67,7 +67,7 @@ namespace Enemy
             var moveList = Map.PathFinder.FindShortestPath(transform.position);
             if (moveList != null)
                 _moveList = moveList;
-            DrawPath(_moveList, transform.position);
+            //DrawPath(_moveList, transform.position);
         }
 
         private void CheckDamageStatus()
