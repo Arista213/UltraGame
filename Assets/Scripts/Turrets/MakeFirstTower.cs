@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FirstButton : MonoBehaviour
+public class MakeFirstTower : MonoBehaviour
 {
-    public bool MakeFirstTower()
+    /*public bool MakeFirstTower()
     {
         return true;
-    }
+    }*/
 }

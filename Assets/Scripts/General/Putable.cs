@@ -1,14 +1,33 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Turrets;
 using UnityEngine;
 
 public class Putable : MonoBehaviour
 {
     public Color holorColor;
+    public Color cannotColor;
     private Color startColor;
     private Renderer rend;
-    // Start is called before the first frame update
+
+    private Tree tree;
+    public Vector3 positionOffset;
+
+    private GameObject turret;
+
+    private void OnMouseDown()
+    {
+        if (turret!=null)
+        {
+            Debug.Log("нет");
+            return;
+        }
+
+        GameObject turretToBuild = TurretPlacing.instance.GetTurrentToBuild();
+        turret = (GameObject) Instantiate(turretToBuild, transform.position + positionOffset, transform.rotation);
+    }
+
     void Start()
     {
         rend = GetComponent<Renderer>();
@@ -17,7 +36,9 @@ public class Putable : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        rend.material.color = holorColor;
+        if (false)  
+            rend.material.color = cannotColor; 
+        else rend.material.color = holorColor;
     }
 
     private void OnMouseExit()

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,31 +8,28 @@ namespace Turrets
     
     public class TurretPlacing : MonoBehaviour
     {
-        // Start is called before the first frame update
-        void Start()
-        {
+        public static TurretPlacing instance;
 
+        private GameObject turrentToBuild;
+        public GameObject standartTurretPrefab;
+
+        private void Start()
+        {
+            turrentToBuild = standartTurretPrefab;
         }
 
-        // Update is called once per frame
-        void Update()
+        private void Awake()
         {
-
+            if (instance != null)
+            {
+                Debug.Log("no");
+            }
+            instance = this;
         }
 
-        private void placeTurret1()
+        public GameObject GetTurrentToBuild()
         {
-            
-        }
-
-        private void placeTurret2()
-        {
-            
-        }
-
-        private void placeTurret()
-        {
-            
+            return turrentToBuild;
         }
     }
 }
