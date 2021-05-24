@@ -285,7 +285,7 @@ MonoBehaviour:
   Health: 50
   healthBar: {fileID: 3550129162239955984}
   DamageableGameobject: {fileID: 0}
-  Range: 20
+  Range: 1
   Damage: 20
   FireRate: 1
   Target: {fileID: 0}

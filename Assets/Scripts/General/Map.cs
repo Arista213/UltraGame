@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Enemy;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace General
 {
@@ -12,14 +13,15 @@ namespace General
         public static PathFinder PathFinder { get; set; }
         public static int EnemiesAlive { get; set; }
         public static LayerMask PlayerSideLayer;
-        [SerializeField] private LayerMask _solidLayer;
         [SerializeField] private LayerMask _playerSideLayer;
+        [SerializeField] private LayerMask _solidLayer;
+        [SerializeField] private Text _money;
 
         private void Awake()
         {
+            PlayerSideLayer = _playerSideLayer;
             PlayerSideTransforms = new List<Vector3>();
             PathFinder = new PathFinder(_solidLayer, GameObject.FindWithTag("Player").transform);
-            PlayerSideLayer = _playerSideLayer;
         }
 
         public static void Add(Vector3 position)
