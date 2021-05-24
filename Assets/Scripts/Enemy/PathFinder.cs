@@ -28,7 +28,6 @@ namespace Enemy
             var y = vector.y < 0
                 ? vector.y + (CellSize / 2 - vector.y % CellSize) - CellSize
                 : vector.y + (CellSize / 2 - vector.y % CellSize);
-            Enemy.DrawLine(vector, new Vector3(x, y), Color.magenta);
             return new Vector3(x, y);
         }
 

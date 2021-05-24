@@ -112,9 +112,7 @@
      <Compile Include="Assets\Scripts\Buttons\FirstButton.cs" />
      <Compile Include="Assets\Scripts\General\Putable.cs" />
      <Compile Include="Assets\Scripts\Turrets\TurretPlacing.cs" />
-     <Compile Include="Assets\Scripts\General\A\Grit.cs" />
-     <Compile Include="Assets\Scripts\General\A\Node.cs" />
-     <Compile Include="Assets\Scripts\General\A\Pathfinding.cs" />
+     <Compile Include="Assets\Scripts\General\GameManager.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\craftpix-891178-free-golem-tiny-style-2d-character-sprites\TXT\license.txt" />

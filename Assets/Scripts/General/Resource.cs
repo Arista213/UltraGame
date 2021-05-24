@@ -4,24 +4,33 @@ using UnityEngine.UI;
 
 namespace General
 {
-    public class Resource : MonoBehaviour
+    public class Resource
     {
-        [SerializeField] private Text _moneyText;
-        public static int Money { get; private set; }
+        private static int money;
+        private static Text moneyText;
 
-        private void Start()
+        public Resource(int _money, Text _moneyText)
         {
-            Money = 30;
+            money = _money;
+            moneyText = _moneyText;
+            UpdateMoneyStatus();
+        }
+
+        public static void BuildTower(int price)
+        {
+            money -= price;
+            UpdateMoneyStatus();
         }
 
         public static void GainMoneyForKill()
         {
-            Money += 5;
+            money += 5;
+            UpdateMoneyStatus();
         }
 
-        private void UpdateMoneyStatus()
+        private static void UpdateMoneyStatus()
         {
-            _moneyText.text = Money.ToString();
+            moneyText.text = "$" + money;
         }
     }
 }
